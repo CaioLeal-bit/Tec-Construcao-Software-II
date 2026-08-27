@@ -27,8 +27,8 @@ export * from "./enums.js"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Usuarios
+ * const usuarios = await prisma.usuario.findMany()
  * ```
  * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -43,7 +43,72 @@ path.join(__dirname, "query_engine-windows.dll.node")
 path.join(process.cwd(), "src/generated/prisma/query_engine-windows.dll.node")
 
 /**
- * Model User
+ * Model Usuario
  * 
  */
-export type User = Prisma.UserModel
+export type Usuario = Prisma.UsuarioModel
+/**
+ * Model Categoria
+ * 
+ */
+export type Categoria = Prisma.CategoriaModel
+/**
+ * Model Curso
+ * 
+ */
+export type Curso = Prisma.CursoModel
+/**
+ * Model Modulo
+ * 
+ */
+export type Modulo = Prisma.ModuloModel
+/**
+ * Model Aula
+ * 
+ */
+export type Aula = Prisma.AulaModel
+/**
+ * Model Matricula
+ * 
+ */
+export type Matricula = Prisma.MatriculaModel
+/**
+ * Model ProgressoAula
+ * 
+ */
+export type ProgressoAula = Prisma.ProgressoAulaModel
+/**
+ * Model Avaliacao
+ * 
+ */
+export type Avaliacao = Prisma.AvaliacaoModel
+/**
+ * Model Trilha
+ * 
+ */
+export type Trilha = Prisma.TrilhaModel
+/**
+ * Model TrilhaCurso
+ * 
+ */
+export type TrilhaCurso = Prisma.TrilhaCursoModel
+/**
+ * Model Certificado
+ * 
+ */
+export type Certificado = Prisma.CertificadoModel
+/**
+ * Model Plano
+ * 
+ */
+export type Plano = Prisma.PlanoModel
+/**
+ * Model Assinatura
+ * 
+ */
+export type Assinatura = Prisma.AssinaturaModel
+/**
+ * Model Pagamento
+ * 
+ */
+export type Pagamento = Prisma.PagamentoModel

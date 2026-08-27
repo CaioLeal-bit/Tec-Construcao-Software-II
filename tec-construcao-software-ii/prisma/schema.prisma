@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client"
-  output = "../src/generated/prisma"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
   moduleFormat = "cjs"
 }
 
@@ -9,11 +9,199 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt()
+model Usuario {
+  id           Int      @id @default(autoincrement()) @map("ID_Usuario")
+  nomeCompleto String
+  email        String   @unique
+  senhaHash    String
+  dataCadastro DateTime @default(now())
+
+  cursosMinistrados Curso[]         @relation("InstrutorCursos")
+  matriculas        Matricula[]
+  progressoAulas    ProgressoAula[]
+  avaliacoes        Avaliacao[]
+  certificados      Certificado[]
+  assinaturas       Assinatura[]
+
+  @@map("Usuarios")
+}
+
+model Categoria {
+  id        Int     @id @default(autoincrement()) @map("ID_Categoria")
+  nome      String  @unique
+  descricao String?
+
+  cursos  Curso[]
+  trilhas Trilha[]
+
+  @@map("Categorias")
+}
+
+model Curso {
+  id             Int       @id @default(autoincrement()) @map("ID_Curso")
+  titulo         String
+  descricao      String
+  instrutorId    Int       @map("ID_Instrutor")
+  categoriaId    Int       @map("ID_Categoria")
+  nivel          String
+  dataPublicacao DateTime?
+  totalAulas     Int       @default(0)
+  totalHoras     Float     @default(0)
+
+  instrutor     Usuario       @relation("InstrutorCursos", fields: [instrutorId], references: [id])
+  categoria     Categoria     @relation(fields: [categoriaId], references: [id])
+  modulos       Modulo[]
+  matriculas    Matricula[]
+  avaliacoes    Avaliacao[]
+  trilhasCursos TrilhaCurso[]
+  certificados  Certificado[]
+
+  @@map("Cursos")
+}
+
+model Modulo {
+  id      Int    @id @default(autoincrement()) @map("ID_Modulo")
+  cursoId Int    @map("ID_Curso")
+  titulo  String
+  ordem   Int
+
+  curso Curso  @relation(fields: [cursoId], references: [id])
+  aulas Aula[]
+
+  @@map("Modulos")
+}
+
+model Aula {
+  id             Int     @id @default(autoincrement()) @map("ID_Aula")
+  moduloId       Int     @map("ID_Modulo")
+  titulo         String
+  tipoConteudo   String
+  urlConteudo    String? @map("URL_Conteudo")
+  duracaoMinutos Int?    @map("DuracaoMinutos")
+  ordem          Int
+
+  modulo         Modulo          @relation(fields: [moduloId], references: [id])
+  progressoAulas ProgressoAula[]
+
+  @@map("Aulas")
+}
+
+model Matricula {
+  id            Int       @id @default(autoincrement()) @map("ID_Matricula")
+  usuarioId     Int       @map("ID_Usuario")
+  cursoId       Int       @map("ID_Curso")
+  dataMatricula DateTime  @default(now())
+  dataConclusao DateTime?
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  curso   Curso   @relation(fields: [cursoId], references: [id])
+
+  @@map("Matriculas")
+}
+
+model ProgressoAula {
+  usuarioId     Int       @map("ID_Usuario")
+  aulaId        Int       @map("ID_Aula")
+  dataConclusao DateTime?
+  status        String
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  aula    Aula    @relation(fields: [aulaId], references: [id])
+
+  @@id([usuarioId, aulaId])
+  @@map("Progresso_Aulas")
+}
+
+model Avaliacao {
+  id            Int      @id @default(autoincrement()) @map("ID_Avaliacao")
+  usuarioId     Int      @map("ID_Usuario")
+  cursoId       Int      @map("ID_Curso")
+  nota          Int
+  comentario    String?
+  dataAvaliacao DateTime @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  curso   Curso   @relation(fields: [cursoId], references: [id])
+
+  @@map("Avaliacoes")
+}
+
+model Trilha {
+  id          Int     @id @default(autoincrement()) @map("ID_Trilha")
+  titulo      String
+  descricao   String?
+  categoriaId Int     @map("ID_Categoria")
+
+  categoria    Categoria     @relation(fields: [categoriaId], references: [id])
+  trilhaCursos TrilhaCurso[]
+  certificados Certificado[]
+
+  @@map("Trilhas")
+}
+
+model TrilhaCurso {
+  trilhaId Int @map("ID_Trilha")
+  cursoId  Int @map("ID_Curso")
+  ordem    Int
+
+  trilha Trilha @relation(fields: [trilhaId], references: [id])
+  curso  Curso  @relation(fields: [cursoId], references: [id])
+
+  @@id([trilhaId, cursoId])
+  @@map("Trilhas_Cursos")
+}
+
+model Certificado {
+  id                Int      @id @default(autoincrement()) @map("ID_Certificado")
+  usuarioId         Int      @map("ID_Usuario")
+  cursoId           Int?     @map("ID_Curso")
+  trilhaId          Int?     @map("ID_Trilha")
+  codigoVerificacao String   @unique
+  dataEmissao       DateTime @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  curso   Curso?  @relation(fields: [cursoId], references: [id])
+  trilha  Trilha? @relation(fields: [trilhaId], references: [id])
+
+  @@map("Certificados")
+}
+
+model Plano {
+  id           Int     @id @default(autoincrement()) @map("ID_Plano")
+  nome         String
+  descricao    String?
+  preco        Float
+  duracaoMeses Int
+
+  assinaturas Assinatura[]
+
+  @@map("Planos")
+}
+
+model Assinatura {
+  id         Int      @id @default(autoincrement()) @map("ID_Assinatura")
+  usuarioId  Int      @map("ID_Usuario")
+  planoId    Int      @map("ID_Plano")
+  dataInicio DateTime
+  dataFim    DateTime
+
+  usuario    Usuario     @relation(fields: [usuarioId], references: [id])
+  plano      Plano       @relation(fields: [planoId], references: [id])
+  pagamentos Pagamento[]
+
+  @@map("Assinaturas")
+}
+
+model Pagamento {
+  id                 Int      @id @default(autoincrement()) @map("ID_Pagamento")
+  assinaturaId       Int      @map("ID_Assinatura")
+  valorPago          Float
+  dataPagamento      DateTime @default(now())
+  metodoPagamento    String
+  idTransacaoGateway String   @map("Id_Transacao_Gateway")
+  dataFim            DateTime
+
+  assinatura Assinatura @relation(fields: [assinaturaId], references: [id])
+
+  @@map("Pagamentos")
 }

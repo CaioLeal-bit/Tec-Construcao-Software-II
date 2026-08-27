@@ -49,7 +49,20 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  Usuario: 'Usuario',
+  Categoria: 'Categoria',
+  Curso: 'Curso',
+  Modulo: 'Modulo',
+  Aula: 'Aula',
+  Matricula: 'Matricula',
+  ProgressoAula: 'ProgressoAula',
+  Avaliacao: 'Avaliacao',
+  Trilha: 'Trilha',
+  TrilhaCurso: 'TrilhaCurso',
+  Certificado: 'Certificado',
+  Plano: 'Plano',
+  Assinatura: 'Assinatura',
+  Pagamento: 'Pagamento'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,16 +81,161 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
+export const UsuarioScalarFieldEnum = {
   id: 'id',
+  nomeCompleto: 'nomeCompleto',
   email: 'email',
-  name: 'name',
-  password: 'password',
-  createdAt: 'createdAt',
-  updateAt: 'updateAt'
+  senhaHash: 'senhaHash',
+  dataCadastro: 'dataCadastro'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const CategoriaScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao'
+} as const
+
+export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
+
+
+export const CursoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  instrutorId: 'instrutorId',
+  categoriaId: 'categoriaId',
+  nivel: 'nivel',
+  dataPublicacao: 'dataPublicacao',
+  totalAulas: 'totalAulas',
+  totalHoras: 'totalHoras'
+} as const
+
+export type CursoScalarFieldEnum = (typeof CursoScalarFieldEnum)[keyof typeof CursoScalarFieldEnum]
+
+
+export const ModuloScalarFieldEnum = {
+  id: 'id',
+  cursoId: 'cursoId',
+  titulo: 'titulo',
+  ordem: 'ordem'
+} as const
+
+export type ModuloScalarFieldEnum = (typeof ModuloScalarFieldEnum)[keyof typeof ModuloScalarFieldEnum]
+
+
+export const AulaScalarFieldEnum = {
+  id: 'id',
+  moduloId: 'moduloId',
+  titulo: 'titulo',
+  tipoConteudo: 'tipoConteudo',
+  urlConteudo: 'urlConteudo',
+  duracaoMinutos: 'duracaoMinutos',
+  ordem: 'ordem'
+} as const
+
+export type AulaScalarFieldEnum = (typeof AulaScalarFieldEnum)[keyof typeof AulaScalarFieldEnum]
+
+
+export const MatriculaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  cursoId: 'cursoId',
+  dataMatricula: 'dataMatricula',
+  dataConclusao: 'dataConclusao'
+} as const
+
+export type MatriculaScalarFieldEnum = (typeof MatriculaScalarFieldEnum)[keyof typeof MatriculaScalarFieldEnum]
+
+
+export const ProgressoAulaScalarFieldEnum = {
+  usuarioId: 'usuarioId',
+  aulaId: 'aulaId',
+  dataConclusao: 'dataConclusao',
+  status: 'status'
+} as const
+
+export type ProgressoAulaScalarFieldEnum = (typeof ProgressoAulaScalarFieldEnum)[keyof typeof ProgressoAulaScalarFieldEnum]
+
+
+export const AvaliacaoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  cursoId: 'cursoId',
+  nota: 'nota',
+  comentario: 'comentario',
+  dataAvaliacao: 'dataAvaliacao'
+} as const
+
+export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
+
+
+export const TrilhaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  categoriaId: 'categoriaId'
+} as const
+
+export type TrilhaScalarFieldEnum = (typeof TrilhaScalarFieldEnum)[keyof typeof TrilhaScalarFieldEnum]
+
+
+export const TrilhaCursoScalarFieldEnum = {
+  trilhaId: 'trilhaId',
+  cursoId: 'cursoId',
+  ordem: 'ordem'
+} as const
+
+export type TrilhaCursoScalarFieldEnum = (typeof TrilhaCursoScalarFieldEnum)[keyof typeof TrilhaCursoScalarFieldEnum]
+
+
+export const CertificadoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  cursoId: 'cursoId',
+  trilhaId: 'trilhaId',
+  codigoVerificacao: 'codigoVerificacao',
+  dataEmissao: 'dataEmissao'
+} as const
+
+export type CertificadoScalarFieldEnum = (typeof CertificadoScalarFieldEnum)[keyof typeof CertificadoScalarFieldEnum]
+
+
+export const PlanoScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao',
+  preco: 'preco',
+  duracaoMeses: 'duracaoMeses'
+} as const
+
+export type PlanoScalarFieldEnum = (typeof PlanoScalarFieldEnum)[keyof typeof PlanoScalarFieldEnum]
+
+
+export const AssinaturaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  planoId: 'planoId',
+  dataInicio: 'dataInicio',
+  dataFim: 'dataFim'
+} as const
+
+export type AssinaturaScalarFieldEnum = (typeof AssinaturaScalarFieldEnum)[keyof typeof AssinaturaScalarFieldEnum]
+
+
+export const PagamentoScalarFieldEnum = {
+  id: 'id',
+  assinaturaId: 'assinaturaId',
+  valorPago: 'valorPago',
+  dataPagamento: 'dataPagamento',
+  metodoPagamento: 'metodoPagamento',
+  idTransacaoGateway: 'idTransacaoGateway',
+  dataFim: 'dataFim'
+} as const
+
+export type PagamentoScalarFieldEnum = (typeof PagamentoScalarFieldEnum)[keyof typeof PagamentoScalarFieldEnum]
 
 
 export const SortOrder = {
