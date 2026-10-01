@@ -15,4 +15,8 @@ export class CreateUserDto {
   @IsString()
   @MinLength(6)
   senha: string;
+
+  @ApiProperty({ example: 'ALUNO', description: 'Perfil de acesso do usuário (ALUNO ou ADMIN)', required: false })
+  @IsString()
+  perfil?: string;
 }

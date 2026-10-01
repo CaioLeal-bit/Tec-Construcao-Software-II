@@ -13,9 +13,20 @@ async function bootstrap() {
   // Configuração do Swagger
   const config = new DocumentBuilder()
     .setTitle('User CRUD API')
-    .setDescription('Documentação da API de Usuários com NestJS e Prisma')
+    .setDescription('Documentação da API com NestJS, Prisma e JWT')
     .setVersion('1.0')
     .addTag('users')
+    .addTag('auth')
+    .addBearerAuth( // Adiciona o campo de autenticação no Swagger
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        in: 'header',
+      },
+      'token',
+    )
     .build();
     
   const document = SwaggerModule.createDocument(app, config);

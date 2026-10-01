@@ -15,6 +15,7 @@ model Usuario {
   email        String   @unique
   senhaHash    String
   dataCadastro DateTime @default(now())
+  perfil       String   @default("ALUNO")
 
   cursosMinistrados Curso[]         @relation("InstrutorCursos")
   matriculas        Matricula[]

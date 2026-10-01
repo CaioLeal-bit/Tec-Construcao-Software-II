@@ -13,18 +13,18 @@ export class PagamentosService {
     return this.prisma.pagamento.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.pagamento.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.pagamento.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.pagamento.delete({ where: { id } });
   }
 }

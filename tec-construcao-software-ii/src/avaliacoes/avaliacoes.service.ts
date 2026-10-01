@@ -13,18 +13,18 @@ export class AvaliacoesService {
     return this.prisma.avaliacao.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.avaliacao.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.avaliacao.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.avaliacao.delete({ where: { id } });
   }
 }

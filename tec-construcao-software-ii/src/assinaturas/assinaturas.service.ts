@@ -13,18 +13,18 @@ export class AssinaturasService {
     return this.prisma.assinatura.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.assinatura.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.assinatura.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.assinatura.delete({ where: { id } });
   }
 }

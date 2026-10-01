@@ -13,18 +13,18 @@ export class CategoriasService {
     return this.prisma.categoria.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.categoria.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.categoria.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.categoria.delete({ where: { id } });
   }
 }

@@ -13,18 +13,18 @@ export class TrilhasService {
     return this.prisma.trilha.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.trilha.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.trilha.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.trilha.delete({ where: { id } });
   }
 }

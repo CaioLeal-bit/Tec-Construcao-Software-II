@@ -13,18 +13,18 @@ export class ProgressosService {
     return this.prisma.progressoAula.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.progressoAula.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.progressoAula.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.progressoAula.delete({ where: { id } });
   }
 }

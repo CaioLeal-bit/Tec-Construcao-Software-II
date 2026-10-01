@@ -13,18 +13,18 @@ export class CursosService {
     return this.prisma.curso.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.curso.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.curso.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.curso.delete({ where: { id } });
   }
 }

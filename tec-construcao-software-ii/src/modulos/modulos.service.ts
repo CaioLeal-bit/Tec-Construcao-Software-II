@@ -13,18 +13,18 @@ export class ModulosService {
     return this.prisma.modulo.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.modulo.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.modulo.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.modulo.delete({ where: { id } });
   }
 }

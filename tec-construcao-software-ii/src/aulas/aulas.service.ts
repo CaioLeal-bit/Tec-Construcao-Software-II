@@ -13,18 +13,18 @@ export class AulasService {
     return this.prisma.aula.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.aula.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.aula.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.aula.delete({ where: { id } });
   }
 }

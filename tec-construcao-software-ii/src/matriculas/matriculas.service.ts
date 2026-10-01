@@ -13,18 +13,18 @@ export class MatriculasService {
     return this.prisma.matricula.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.matricula.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.matricula.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.matricula.delete({ where: { id } });
   }
 }

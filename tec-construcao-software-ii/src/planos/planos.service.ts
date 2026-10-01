@@ -13,18 +13,18 @@ export class PlanosService {
     return this.prisma.plano.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.plano.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.plano.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.plano.delete({ where: { id } });
   }
 }

@@ -13,18 +13,18 @@ export class CertificadosService {
     return this.prisma.certificado.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.certificado.findUnique({ where: { id } });
   }
 
-  update(id: number, data: any) {
+  update(id: string, data: any) {
     return this.prisma.certificado.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.certificado.delete({ where: { id } });
   }
 }
