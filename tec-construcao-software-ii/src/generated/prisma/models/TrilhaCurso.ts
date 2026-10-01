@@ -27,30 +27,29 @@ export type AggregateTrilhaCurso = {
 }
 
 export type TrilhaCursoAvgAggregateOutputType = {
-  trilhaId: number | null
-  cursoId: number | null
   ordem: number | null
 }
 
 export type TrilhaCursoSumAggregateOutputType = {
-  trilhaId: number | null
-  cursoId: number | null
   ordem: number | null
 }
 
 export type TrilhaCursoMinAggregateOutputType = {
-  trilhaId: number | null
-  cursoId: number | null
+  id: string | null
+  trilhaId: string | null
+  cursoId: string | null
   ordem: number | null
 }
 
 export type TrilhaCursoMaxAggregateOutputType = {
-  trilhaId: number | null
-  cursoId: number | null
+  id: string | null
+  trilhaId: string | null
+  cursoId: string | null
   ordem: number | null
 }
 
 export type TrilhaCursoCountAggregateOutputType = {
+  id: number
   trilhaId: number
   cursoId: number
   ordem: number
@@ -59,30 +58,29 @@ export type TrilhaCursoCountAggregateOutputType = {
 
 
 export type TrilhaCursoAvgAggregateInputType = {
-  trilhaId?: true
-  cursoId?: true
   ordem?: true
 }
 
 export type TrilhaCursoSumAggregateInputType = {
-  trilhaId?: true
-  cursoId?: true
   ordem?: true
 }
 
 export type TrilhaCursoMinAggregateInputType = {
+  id?: true
   trilhaId?: true
   cursoId?: true
   ordem?: true
 }
 
 export type TrilhaCursoMaxAggregateInputType = {
+  id?: true
   trilhaId?: true
   cursoId?: true
   ordem?: true
 }
 
 export type TrilhaCursoCountAggregateInputType = {
+  id?: true
   trilhaId?: true
   cursoId?: true
   ordem?: true
@@ -176,8 +174,9 @@ export type TrilhaCursoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 export type TrilhaCursoGroupByOutputType = {
-  trilhaId: number
-  cursoId: number
+  id: string
+  trilhaId: string
+  cursoId: string
   ordem: number
   _count: TrilhaCursoCountAggregateOutputType | null
   _avg: TrilhaCursoAvgAggregateOutputType | null
@@ -205,14 +204,16 @@ export type TrilhaCursoWhereInput = {
   AND?: Prisma.TrilhaCursoWhereInput | Prisma.TrilhaCursoWhereInput[]
   OR?: Prisma.TrilhaCursoWhereInput[]
   NOT?: Prisma.TrilhaCursoWhereInput | Prisma.TrilhaCursoWhereInput[]
-  trilhaId?: Prisma.IntFilter<"TrilhaCurso"> | number
-  cursoId?: Prisma.IntFilter<"TrilhaCurso"> | number
+  id?: Prisma.StringFilter<"TrilhaCurso"> | string
+  trilhaId?: Prisma.StringFilter<"TrilhaCurso"> | string
+  cursoId?: Prisma.StringFilter<"TrilhaCurso"> | string
   ordem?: Prisma.IntFilter<"TrilhaCurso"> | number
   trilha?: Prisma.XOR<Prisma.TrilhaScalarRelationFilter, Prisma.TrilhaWhereInput>
   curso?: Prisma.XOR<Prisma.CursoScalarRelationFilter, Prisma.CursoWhereInput>
 }
 
 export type TrilhaCursoOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   trilhaId?: Prisma.SortOrder
   cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
@@ -221,18 +222,19 @@ export type TrilhaCursoOrderByWithRelationInput = {
 }
 
 export type TrilhaCursoWhereUniqueInput = Prisma.AtLeast<{
-  trilhaId_cursoId?: Prisma.TrilhaCursoTrilhaIdCursoIdCompoundUniqueInput
+  id?: string
   AND?: Prisma.TrilhaCursoWhereInput | Prisma.TrilhaCursoWhereInput[]
   OR?: Prisma.TrilhaCursoWhereInput[]
   NOT?: Prisma.TrilhaCursoWhereInput | Prisma.TrilhaCursoWhereInput[]
-  trilhaId?: Prisma.IntFilter<"TrilhaCurso"> | number
-  cursoId?: Prisma.IntFilter<"TrilhaCurso"> | number
+  trilhaId?: Prisma.StringFilter<"TrilhaCurso"> | string
+  cursoId?: Prisma.StringFilter<"TrilhaCurso"> | string
   ordem?: Prisma.IntFilter<"TrilhaCurso"> | number
   trilha?: Prisma.XOR<Prisma.TrilhaScalarRelationFilter, Prisma.TrilhaWhereInput>
   curso?: Prisma.XOR<Prisma.CursoScalarRelationFilter, Prisma.CursoWhereInput>
-}, "trilhaId_cursoId">
+}, "id">
 
 export type TrilhaCursoOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   trilhaId?: Prisma.SortOrder
   cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
@@ -247,48 +249,56 @@ export type TrilhaCursoScalarWhereWithAggregatesInput = {
   AND?: Prisma.TrilhaCursoScalarWhereWithAggregatesInput | Prisma.TrilhaCursoScalarWhereWithAggregatesInput[]
   OR?: Prisma.TrilhaCursoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TrilhaCursoScalarWhereWithAggregatesInput | Prisma.TrilhaCursoScalarWhereWithAggregatesInput[]
-  trilhaId?: Prisma.IntWithAggregatesFilter<"TrilhaCurso"> | number
-  cursoId?: Prisma.IntWithAggregatesFilter<"TrilhaCurso"> | number
+  id?: Prisma.StringWithAggregatesFilter<"TrilhaCurso"> | string
+  trilhaId?: Prisma.StringWithAggregatesFilter<"TrilhaCurso"> | string
+  cursoId?: Prisma.StringWithAggregatesFilter<"TrilhaCurso"> | string
   ordem?: Prisma.IntWithAggregatesFilter<"TrilhaCurso"> | number
 }
 
 export type TrilhaCursoCreateInput = {
+  id?: string
   ordem: number
   trilha: Prisma.TrilhaCreateNestedOneWithoutTrilhaCursosInput
   curso: Prisma.CursoCreateNestedOneWithoutTrilhasCursosInput
 }
 
 export type TrilhaCursoUncheckedCreateInput = {
-  trilhaId: number
-  cursoId: number
+  id?: string
+  trilhaId: string
+  cursoId: string
   ordem: number
 }
 
 export type TrilhaCursoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
   trilha?: Prisma.TrilhaUpdateOneRequiredWithoutTrilhaCursosNestedInput
   curso?: Prisma.CursoUpdateOneRequiredWithoutTrilhasCursosNestedInput
 }
 
 export type TrilhaCursoUncheckedUpdateInput = {
-  trilhaId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TrilhaCursoCreateManyInput = {
-  trilhaId: number
-  cursoId: number
+  id?: string
+  trilhaId: string
+  cursoId: string
   ordem: number
 }
 
 export type TrilhaCursoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TrilhaCursoUncheckedUpdateManyInput = {
-  trilhaId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -302,38 +312,32 @@ export type TrilhaCursoOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type TrilhaCursoTrilhaIdCursoIdCompoundUniqueInput = {
-  trilhaId: number
-  cursoId: number
-}
-
 export type TrilhaCursoCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   trilhaId?: Prisma.SortOrder
   cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
 
 export type TrilhaCursoAvgOrderByAggregateInput = {
-  trilhaId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
 
 export type TrilhaCursoMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   trilhaId?: Prisma.SortOrder
   cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
 
 export type TrilhaCursoMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   trilhaId?: Prisma.SortOrder
   cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
 
 export type TrilhaCursoSumOrderByAggregateInput = {
-  trilhaId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
 
@@ -422,12 +426,14 @@ export type TrilhaCursoUncheckedUpdateManyWithoutTrilhaNestedInput = {
 }
 
 export type TrilhaCursoCreateWithoutCursoInput = {
+  id?: string
   ordem: number
   trilha: Prisma.TrilhaCreateNestedOneWithoutTrilhaCursosInput
 }
 
 export type TrilhaCursoUncheckedCreateWithoutCursoInput = {
-  trilhaId: number
+  id?: string
+  trilhaId: string
   ordem: number
 }
 
@@ -461,18 +467,21 @@ export type TrilhaCursoScalarWhereInput = {
   AND?: Prisma.TrilhaCursoScalarWhereInput | Prisma.TrilhaCursoScalarWhereInput[]
   OR?: Prisma.TrilhaCursoScalarWhereInput[]
   NOT?: Prisma.TrilhaCursoScalarWhereInput | Prisma.TrilhaCursoScalarWhereInput[]
-  trilhaId?: Prisma.IntFilter<"TrilhaCurso"> | number
-  cursoId?: Prisma.IntFilter<"TrilhaCurso"> | number
+  id?: Prisma.StringFilter<"TrilhaCurso"> | string
+  trilhaId?: Prisma.StringFilter<"TrilhaCurso"> | string
+  cursoId?: Prisma.StringFilter<"TrilhaCurso"> | string
   ordem?: Prisma.IntFilter<"TrilhaCurso"> | number
 }
 
 export type TrilhaCursoCreateWithoutTrilhaInput = {
+  id?: string
   ordem: number
   curso: Prisma.CursoCreateNestedOneWithoutTrilhasCursosInput
 }
 
 export type TrilhaCursoUncheckedCreateWithoutTrilhaInput = {
-  cursoId: number
+  id?: string
+  cursoId: string
   ordem: number
 }
 
@@ -503,48 +512,57 @@ export type TrilhaCursoUpdateManyWithWhereWithoutTrilhaInput = {
 }
 
 export type TrilhaCursoCreateManyCursoInput = {
-  trilhaId: number
+  id?: string
+  trilhaId: string
   ordem: number
 }
 
 export type TrilhaCursoUpdateWithoutCursoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
   trilha?: Prisma.TrilhaUpdateOneRequiredWithoutTrilhaCursosNestedInput
 }
 
 export type TrilhaCursoUncheckedUpdateWithoutCursoInput = {
-  trilhaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TrilhaCursoUncheckedUpdateManyWithoutCursoInput = {
-  trilhaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TrilhaCursoCreateManyTrilhaInput = {
-  cursoId: number
+  id?: string
+  cursoId: string
   ordem: number
 }
 
 export type TrilhaCursoUpdateWithoutTrilhaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
   curso?: Prisma.CursoUpdateOneRequiredWithoutTrilhasCursosNestedInput
 }
 
 export type TrilhaCursoUncheckedUpdateWithoutTrilhaInput = {
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TrilhaCursoUncheckedUpdateManyWithoutTrilhaInput = {
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   ordem?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
 
 export type TrilhaCursoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   trilhaId?: boolean
   cursoId?: boolean
   ordem?: boolean
@@ -553,6 +571,7 @@ export type TrilhaCursoSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 }, ExtArgs["result"]["trilhaCurso"]>
 
 export type TrilhaCursoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   trilhaId?: boolean
   cursoId?: boolean
   ordem?: boolean
@@ -561,6 +580,7 @@ export type TrilhaCursoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
 }, ExtArgs["result"]["trilhaCurso"]>
 
 export type TrilhaCursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   trilhaId?: boolean
   cursoId?: boolean
   ordem?: boolean
@@ -569,12 +589,13 @@ export type TrilhaCursoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 }, ExtArgs["result"]["trilhaCurso"]>
 
 export type TrilhaCursoSelectScalar = {
+  id?: boolean
   trilhaId?: boolean
   cursoId?: boolean
   ordem?: boolean
 }
 
-export type TrilhaCursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"trilhaId" | "cursoId" | "ordem", ExtArgs["result"]["trilhaCurso"]>
+export type TrilhaCursoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "trilhaId" | "cursoId" | "ordem", ExtArgs["result"]["trilhaCurso"]>
 export type TrilhaCursoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trilha?: boolean | Prisma.TrilhaDefaultArgs<ExtArgs>
   curso?: boolean | Prisma.CursoDefaultArgs<ExtArgs>
@@ -595,8 +616,9 @@ export type $TrilhaCursoPayload<ExtArgs extends runtime.Types.Extensions.Interna
     curso: Prisma.$CursoPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    trilhaId: number
-    cursoId: number
+    id: string
+    trilhaId: string
+    cursoId: string
     ordem: number
   }, ExtArgs["result"]["trilhaCurso"]>
   composites: {}
@@ -681,8 +703,8 @@ export interface TrilhaCursoDelegate<ExtArgs extends runtime.Types.Extensions.In
    * // Get first 10 TrilhaCursos
    * const trilhaCursos = await prisma.trilhaCurso.findMany({ take: 10 })
    * 
-   * // Only select the `trilhaId`
-   * const trilhaCursoWithTrilhaIdOnly = await prisma.trilhaCurso.findMany({ select: { trilhaId: true } })
+   * // Only select the `id`
+   * const trilhaCursoWithIdOnly = await prisma.trilhaCurso.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends TrilhaCursoFindManyArgs>(args?: Prisma.SelectSubset<T, TrilhaCursoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TrilhaCursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -726,9 +748,9 @@ export interface TrilhaCursoDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Create many TrilhaCursos and only return the `trilhaId`
-   * const trilhaCursoWithTrilhaIdOnly = await prisma.trilhaCurso.createManyAndReturn({
-   *   select: { trilhaId: true },
+   * // Create many TrilhaCursos and only return the `id`
+   * const trilhaCursoWithIdOnly = await prisma.trilhaCurso.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -817,9 +839,9 @@ export interface TrilhaCursoDelegate<ExtArgs extends runtime.Types.Extensions.In
    *   ]
    * })
    * 
-   * // Update zero or more TrilhaCursos and only return the `trilhaId`
-   * const trilhaCursoWithTrilhaIdOnly = await prisma.trilhaCurso.updateManyAndReturn({
-   *   select: { trilhaId: true },
+   * // Update zero or more TrilhaCursos and only return the `id`
+   * const trilhaCursoWithIdOnly = await prisma.trilhaCurso.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1023,8 +1045,9 @@ export interface Prisma__TrilhaCursoClient<T, Null = never, ExtArgs extends runt
  * Fields of the TrilhaCurso model
  */
 export interface TrilhaCursoFieldRefs {
-  readonly trilhaId: Prisma.FieldRef<"TrilhaCurso", 'Int'>
-  readonly cursoId: Prisma.FieldRef<"TrilhaCurso", 'Int'>
+  readonly id: Prisma.FieldRef<"TrilhaCurso", 'String'>
+  readonly trilhaId: Prisma.FieldRef<"TrilhaCurso", 'String'>
+  readonly cursoId: Prisma.FieldRef<"TrilhaCurso", 'String'>
   readonly ordem: Prisma.FieldRef<"TrilhaCurso", 'Int'>
 }
     

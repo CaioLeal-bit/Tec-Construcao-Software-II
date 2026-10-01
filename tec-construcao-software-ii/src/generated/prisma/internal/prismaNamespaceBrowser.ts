@@ -151,6 +151,7 @@ export type MatriculaScalarFieldEnum = (typeof MatriculaScalarFieldEnum)[keyof t
 
 
 export const ProgressoAulaScalarFieldEnum = {
+  id: 'id',
   usuarioId: 'usuarioId',
   aulaId: 'aulaId',
   dataConclusao: 'dataConclusao',
@@ -183,6 +184,7 @@ export type TrilhaScalarFieldEnum = (typeof TrilhaScalarFieldEnum)[keyof typeof 
 
 
 export const TrilhaCursoScalarFieldEnum = {
+  id: 'id',
   trilhaId: 'trilhaId',
   cursoId: 'cursoId',
   ordem: 'ordem'

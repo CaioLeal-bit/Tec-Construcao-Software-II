@@ -27,22 +27,18 @@ export type AggregateAula = {
 }
 
 export type AulaAvgAggregateOutputType = {
-  id: number | null
-  moduloId: number | null
   duracaoMinutos: number | null
   ordem: number | null
 }
 
 export type AulaSumAggregateOutputType = {
-  id: number | null
-  moduloId: number | null
   duracaoMinutos: number | null
   ordem: number | null
 }
 
 export type AulaMinAggregateOutputType = {
-  id: number | null
-  moduloId: number | null
+  id: string | null
+  moduloId: string | null
   titulo: string | null
   tipoConteudo: string | null
   urlConteudo: string | null
@@ -51,8 +47,8 @@ export type AulaMinAggregateOutputType = {
 }
 
 export type AulaMaxAggregateOutputType = {
-  id: number | null
-  moduloId: number | null
+  id: string | null
+  moduloId: string | null
   titulo: string | null
   tipoConteudo: string | null
   urlConteudo: string | null
@@ -73,15 +69,11 @@ export type AulaCountAggregateOutputType = {
 
 
 export type AulaAvgAggregateInputType = {
-  id?: true
-  moduloId?: true
   duracaoMinutos?: true
   ordem?: true
 }
 
 export type AulaSumAggregateInputType = {
-  id?: true
-  moduloId?: true
   duracaoMinutos?: true
   ordem?: true
 }
@@ -204,8 +196,8 @@ export type AulaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 export type AulaGroupByOutputType = {
-  id: number
-  moduloId: number
+  id: string
+  moduloId: string
   titulo: string
   tipoConteudo: string
   urlConteudo: string | null
@@ -237,8 +229,8 @@ export type AulaWhereInput = {
   AND?: Prisma.AulaWhereInput | Prisma.AulaWhereInput[]
   OR?: Prisma.AulaWhereInput[]
   NOT?: Prisma.AulaWhereInput | Prisma.AulaWhereInput[]
-  id?: Prisma.IntFilter<"Aula"> | number
-  moduloId?: Prisma.IntFilter<"Aula"> | number
+  id?: Prisma.StringFilter<"Aula"> | string
+  moduloId?: Prisma.StringFilter<"Aula"> | string
   titulo?: Prisma.StringFilter<"Aula"> | string
   tipoConteudo?: Prisma.StringFilter<"Aula"> | string
   urlConteudo?: Prisma.StringNullableFilter<"Aula"> | string | null
@@ -261,11 +253,11 @@ export type AulaOrderByWithRelationInput = {
 }
 
 export type AulaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.AulaWhereInput | Prisma.AulaWhereInput[]
   OR?: Prisma.AulaWhereInput[]
   NOT?: Prisma.AulaWhereInput | Prisma.AulaWhereInput[]
-  moduloId?: Prisma.IntFilter<"Aula"> | number
+  moduloId?: Prisma.StringFilter<"Aula"> | string
   titulo?: Prisma.StringFilter<"Aula"> | string
   tipoConteudo?: Prisma.StringFilter<"Aula"> | string
   urlConteudo?: Prisma.StringNullableFilter<"Aula"> | string | null
@@ -294,8 +286,8 @@ export type AulaScalarWhereWithAggregatesInput = {
   AND?: Prisma.AulaScalarWhereWithAggregatesInput | Prisma.AulaScalarWhereWithAggregatesInput[]
   OR?: Prisma.AulaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AulaScalarWhereWithAggregatesInput | Prisma.AulaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Aula"> | number
-  moduloId?: Prisma.IntWithAggregatesFilter<"Aula"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Aula"> | string
+  moduloId?: Prisma.StringWithAggregatesFilter<"Aula"> | string
   titulo?: Prisma.StringWithAggregatesFilter<"Aula"> | string
   tipoConteudo?: Prisma.StringWithAggregatesFilter<"Aula"> | string
   urlConteudo?: Prisma.StringNullableWithAggregatesFilter<"Aula"> | string | null
@@ -304,6 +296,7 @@ export type AulaScalarWhereWithAggregatesInput = {
 }
 
 export type AulaCreateInput = {
+  id?: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -314,8 +307,8 @@ export type AulaCreateInput = {
 }
 
 export type AulaUncheckedCreateInput = {
-  id?: number
-  moduloId: number
+  id?: string
+  moduloId: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -325,6 +318,7 @@ export type AulaUncheckedCreateInput = {
 }
 
 export type AulaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -335,8 +329,8 @@ export type AulaUpdateInput = {
 }
 
 export type AulaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  moduloId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  moduloId?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -346,8 +340,8 @@ export type AulaUncheckedUpdateInput = {
 }
 
 export type AulaCreateManyInput = {
-  id?: number
-  moduloId: number
+  id?: string
+  moduloId: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -356,6 +350,7 @@ export type AulaCreateManyInput = {
 }
 
 export type AulaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -364,8 +359,8 @@ export type AulaUpdateManyMutationInput = {
 }
 
 export type AulaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  moduloId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  moduloId?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -394,8 +389,6 @@ export type AulaCountOrderByAggregateInput = {
 }
 
 export type AulaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  moduloId?: Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
@@ -421,8 +414,6 @@ export type AulaMinOrderByAggregateInput = {
 }
 
 export type AulaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  moduloId?: Prisma.SortOrder
   duracaoMinutos?: Prisma.SortOrder
   ordem?: Prisma.SortOrder
 }
@@ -497,6 +488,7 @@ export type AulaUpdateOneRequiredWithoutProgressoAulasNestedInput = {
 }
 
 export type AulaCreateWithoutModuloInput = {
+  id?: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -506,7 +498,7 @@ export type AulaCreateWithoutModuloInput = {
 }
 
 export type AulaUncheckedCreateWithoutModuloInput = {
-  id?: number
+  id?: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -545,8 +537,8 @@ export type AulaScalarWhereInput = {
   AND?: Prisma.AulaScalarWhereInput | Prisma.AulaScalarWhereInput[]
   OR?: Prisma.AulaScalarWhereInput[]
   NOT?: Prisma.AulaScalarWhereInput | Prisma.AulaScalarWhereInput[]
-  id?: Prisma.IntFilter<"Aula"> | number
-  moduloId?: Prisma.IntFilter<"Aula"> | number
+  id?: Prisma.StringFilter<"Aula"> | string
+  moduloId?: Prisma.StringFilter<"Aula"> | string
   titulo?: Prisma.StringFilter<"Aula"> | string
   tipoConteudo?: Prisma.StringFilter<"Aula"> | string
   urlConteudo?: Prisma.StringNullableFilter<"Aula"> | string | null
@@ -555,6 +547,7 @@ export type AulaScalarWhereInput = {
 }
 
 export type AulaCreateWithoutProgressoAulasInput = {
+  id?: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -564,8 +557,8 @@ export type AulaCreateWithoutProgressoAulasInput = {
 }
 
 export type AulaUncheckedCreateWithoutProgressoAulasInput = {
-  id?: number
-  moduloId: number
+  id?: string
+  moduloId: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -590,6 +583,7 @@ export type AulaUpdateToOneWithWhereWithoutProgressoAulasInput = {
 }
 
 export type AulaUpdateWithoutProgressoAulasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -599,8 +593,8 @@ export type AulaUpdateWithoutProgressoAulasInput = {
 }
 
 export type AulaUncheckedUpdateWithoutProgressoAulasInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  moduloId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  moduloId?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -609,7 +603,7 @@ export type AulaUncheckedUpdateWithoutProgressoAulasInput = {
 }
 
 export type AulaCreateManyModuloInput = {
-  id?: number
+  id?: string
   titulo: string
   tipoConteudo: string
   urlConteudo?: string | null
@@ -618,6 +612,7 @@ export type AulaCreateManyModuloInput = {
 }
 
 export type AulaUpdateWithoutModuloInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -627,7 +622,7 @@ export type AulaUpdateWithoutModuloInput = {
 }
 
 export type AulaUncheckedUpdateWithoutModuloInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -637,7 +632,7 @@ export type AulaUncheckedUpdateWithoutModuloInput = {
 }
 
 export type AulaUncheckedUpdateManyWithoutModuloInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   tipoConteudo?: Prisma.StringFieldUpdateOperationsInput | string
   urlConteudo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -741,8 +736,8 @@ export type $AulaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     progressoAulas: Prisma.$ProgressoAulaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    moduloId: number
+    id: string
+    moduloId: string
     titulo: string
     tipoConteudo: string
     urlConteudo: string | null
@@ -1173,8 +1168,8 @@ export interface Prisma__AulaClient<T, Null = never, ExtArgs extends runtime.Typ
  * Fields of the Aula model
  */
 export interface AulaFieldRefs {
-  readonly id: Prisma.FieldRef<"Aula", 'Int'>
-  readonly moduloId: Prisma.FieldRef<"Aula", 'Int'>
+  readonly id: Prisma.FieldRef<"Aula", 'String'>
+  readonly moduloId: Prisma.FieldRef<"Aula", 'String'>
   readonly titulo: Prisma.FieldRef<"Aula", 'String'>
   readonly tipoConteudo: Prisma.FieldRef<"Aula", 'String'>
   readonly urlConteudo: Prisma.FieldRef<"Aula", 'String'>

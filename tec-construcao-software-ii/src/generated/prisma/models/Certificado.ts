@@ -20,40 +20,24 @@ export type CertificadoModel = runtime.Types.Result.DefaultSelection<Prisma.$Cer
 
 export type AggregateCertificado = {
   _count: CertificadoCountAggregateOutputType | null
-  _avg: CertificadoAvgAggregateOutputType | null
-  _sum: CertificadoSumAggregateOutputType | null
   _min: CertificadoMinAggregateOutputType | null
   _max: CertificadoMaxAggregateOutputType | null
 }
 
-export type CertificadoAvgAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-  trilhaId: number | null
-}
-
-export type CertificadoSumAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-  trilhaId: number | null
-}
-
 export type CertificadoMinAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-  trilhaId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
+  trilhaId: string | null
   codigoVerificacao: string | null
   dataEmissao: Date | null
 }
 
 export type CertificadoMaxAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-  trilhaId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
+  trilhaId: string | null
   codigoVerificacao: string | null
   dataEmissao: Date | null
 }
@@ -68,20 +52,6 @@ export type CertificadoCountAggregateOutputType = {
   _all: number
 }
 
-
-export type CertificadoAvgAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
-  trilhaId?: true
-}
-
-export type CertificadoSumAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
-  trilhaId?: true
-}
 
 export type CertificadoMinAggregateInputType = {
   id?: true
@@ -149,18 +119,6 @@ export type CertificadoAggregateArgs<ExtArgs extends runtime.Types.Extensions.In
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: CertificadoAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: CertificadoSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: CertificadoMinAggregateInputType
@@ -191,22 +149,18 @@ export type CertificadoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   _count?: CertificadoCountAggregateInputType | true
-  _avg?: CertificadoAvgAggregateInputType
-  _sum?: CertificadoSumAggregateInputType
   _min?: CertificadoMinAggregateInputType
   _max?: CertificadoMaxAggregateInputType
 }
 
 export type CertificadoGroupByOutputType = {
-  id: number
-  usuarioId: number
-  cursoId: number | null
-  trilhaId: number | null
+  id: string
+  usuarioId: string
+  cursoId: string | null
+  trilhaId: string | null
   codigoVerificacao: string
   dataEmissao: Date
   _count: CertificadoCountAggregateOutputType | null
-  _avg: CertificadoAvgAggregateOutputType | null
-  _sum: CertificadoSumAggregateOutputType | null
   _min: CertificadoMinAggregateOutputType | null
   _max: CertificadoMaxAggregateOutputType | null
 }
@@ -230,10 +184,10 @@ export type CertificadoWhereInput = {
   AND?: Prisma.CertificadoWhereInput | Prisma.CertificadoWhereInput[]
   OR?: Prisma.CertificadoWhereInput[]
   NOT?: Prisma.CertificadoWhereInput | Prisma.CertificadoWhereInput[]
-  id?: Prisma.IntFilter<"Certificado"> | number
-  usuarioId?: Prisma.IntFilter<"Certificado"> | number
-  cursoId?: Prisma.IntNullableFilter<"Certificado"> | number | null
-  trilhaId?: Prisma.IntNullableFilter<"Certificado"> | number | null
+  id?: Prisma.StringFilter<"Certificado"> | string
+  usuarioId?: Prisma.StringFilter<"Certificado"> | string
+  cursoId?: Prisma.StringNullableFilter<"Certificado"> | string | null
+  trilhaId?: Prisma.StringNullableFilter<"Certificado"> | string | null
   codigoVerificacao?: Prisma.StringFilter<"Certificado"> | string
   dataEmissao?: Prisma.DateTimeFilter<"Certificado"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -254,14 +208,14 @@ export type CertificadoOrderByWithRelationInput = {
 }
 
 export type CertificadoWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   codigoVerificacao?: string
   AND?: Prisma.CertificadoWhereInput | Prisma.CertificadoWhereInput[]
   OR?: Prisma.CertificadoWhereInput[]
   NOT?: Prisma.CertificadoWhereInput | Prisma.CertificadoWhereInput[]
-  usuarioId?: Prisma.IntFilter<"Certificado"> | number
-  cursoId?: Prisma.IntNullableFilter<"Certificado"> | number | null
-  trilhaId?: Prisma.IntNullableFilter<"Certificado"> | number | null
+  usuarioId?: Prisma.StringFilter<"Certificado"> | string
+  cursoId?: Prisma.StringNullableFilter<"Certificado"> | string | null
+  trilhaId?: Prisma.StringNullableFilter<"Certificado"> | string | null
   dataEmissao?: Prisma.DateTimeFilter<"Certificado"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   curso?: Prisma.XOR<Prisma.CursoNullableScalarRelationFilter, Prisma.CursoWhereInput> | null
@@ -276,25 +230,24 @@ export type CertificadoOrderByWithAggregationInput = {
   codigoVerificacao?: Prisma.SortOrder
   dataEmissao?: Prisma.SortOrder
   _count?: Prisma.CertificadoCountOrderByAggregateInput
-  _avg?: Prisma.CertificadoAvgOrderByAggregateInput
   _max?: Prisma.CertificadoMaxOrderByAggregateInput
   _min?: Prisma.CertificadoMinOrderByAggregateInput
-  _sum?: Prisma.CertificadoSumOrderByAggregateInput
 }
 
 export type CertificadoScalarWhereWithAggregatesInput = {
   AND?: Prisma.CertificadoScalarWhereWithAggregatesInput | Prisma.CertificadoScalarWhereWithAggregatesInput[]
   OR?: Prisma.CertificadoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CertificadoScalarWhereWithAggregatesInput | Prisma.CertificadoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Certificado"> | number
-  usuarioId?: Prisma.IntWithAggregatesFilter<"Certificado"> | number
-  cursoId?: Prisma.IntNullableWithAggregatesFilter<"Certificado"> | number | null
-  trilhaId?: Prisma.IntNullableWithAggregatesFilter<"Certificado"> | number | null
+  id?: Prisma.StringWithAggregatesFilter<"Certificado"> | string
+  usuarioId?: Prisma.StringWithAggregatesFilter<"Certificado"> | string
+  cursoId?: Prisma.StringNullableWithAggregatesFilter<"Certificado"> | string | null
+  trilhaId?: Prisma.StringNullableWithAggregatesFilter<"Certificado"> | string | null
   codigoVerificacao?: Prisma.StringWithAggregatesFilter<"Certificado"> | string
   dataEmissao?: Prisma.DateTimeWithAggregatesFilter<"Certificado"> | Date | string
 }
 
 export type CertificadoCreateInput = {
+  id?: string
   codigoVerificacao: string
   dataEmissao?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutCertificadosInput
@@ -303,15 +256,16 @@ export type CertificadoCreateInput = {
 }
 
 export type CertificadoUncheckedCreateInput = {
-  id?: number
-  usuarioId: number
-  cursoId?: number | null
-  trilhaId?: number | null
+  id?: string
+  usuarioId: string
+  cursoId?: string | null
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
 
 export type CertificadoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutCertificadosNestedInput
@@ -320,33 +274,34 @@ export type CertificadoUpdateInput = {
 }
 
 export type CertificadoUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoCreateManyInput = {
-  id?: number
-  usuarioId: number
-  cursoId?: number | null
-  trilhaId?: number | null
+  id?: string
+  usuarioId: string
+  cursoId?: string | null
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
 
 export type CertificadoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -370,13 +325,6 @@ export type CertificadoCountOrderByAggregateInput = {
   dataEmissao?: Prisma.SortOrder
 }
 
-export type CertificadoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
-  trilhaId?: Prisma.SortOrder
-}
-
 export type CertificadoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
@@ -393,13 +341,6 @@ export type CertificadoMinOrderByAggregateInput = {
   trilhaId?: Prisma.SortOrder
   codigoVerificacao?: Prisma.SortOrder
   dataEmissao?: Prisma.SortOrder
-}
-
-export type CertificadoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
-  trilhaId?: Prisma.SortOrder
 }
 
 export type CertificadoCreateNestedManyWithoutUsuarioInput = {
@@ -529,6 +470,7 @@ export type CertificadoUncheckedUpdateManyWithoutTrilhaNestedInput = {
 }
 
 export type CertificadoCreateWithoutUsuarioInput = {
+  id?: string
   codigoVerificacao: string
   dataEmissao?: Date | string
   curso?: Prisma.CursoCreateNestedOneWithoutCertificadosInput
@@ -536,9 +478,9 @@ export type CertificadoCreateWithoutUsuarioInput = {
 }
 
 export type CertificadoUncheckedCreateWithoutUsuarioInput = {
-  id?: number
-  cursoId?: number | null
-  trilhaId?: number | null
+  id?: string
+  cursoId?: string | null
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
@@ -573,15 +515,16 @@ export type CertificadoScalarWhereInput = {
   AND?: Prisma.CertificadoScalarWhereInput | Prisma.CertificadoScalarWhereInput[]
   OR?: Prisma.CertificadoScalarWhereInput[]
   NOT?: Prisma.CertificadoScalarWhereInput | Prisma.CertificadoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Certificado"> | number
-  usuarioId?: Prisma.IntFilter<"Certificado"> | number
-  cursoId?: Prisma.IntNullableFilter<"Certificado"> | number | null
-  trilhaId?: Prisma.IntNullableFilter<"Certificado"> | number | null
+  id?: Prisma.StringFilter<"Certificado"> | string
+  usuarioId?: Prisma.StringFilter<"Certificado"> | string
+  cursoId?: Prisma.StringNullableFilter<"Certificado"> | string | null
+  trilhaId?: Prisma.StringNullableFilter<"Certificado"> | string | null
   codigoVerificacao?: Prisma.StringFilter<"Certificado"> | string
   dataEmissao?: Prisma.DateTimeFilter<"Certificado"> | Date | string
 }
 
 export type CertificadoCreateWithoutCursoInput = {
+  id?: string
   codigoVerificacao: string
   dataEmissao?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutCertificadosInput
@@ -589,9 +532,9 @@ export type CertificadoCreateWithoutCursoInput = {
 }
 
 export type CertificadoUncheckedCreateWithoutCursoInput = {
-  id?: number
-  usuarioId: number
-  trilhaId?: number | null
+  id?: string
+  usuarioId: string
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
@@ -623,6 +566,7 @@ export type CertificadoUpdateManyWithWhereWithoutCursoInput = {
 }
 
 export type CertificadoCreateWithoutTrilhaInput = {
+  id?: string
   codigoVerificacao: string
   dataEmissao?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutCertificadosInput
@@ -630,9 +574,9 @@ export type CertificadoCreateWithoutTrilhaInput = {
 }
 
 export type CertificadoUncheckedCreateWithoutTrilhaInput = {
-  id?: number
-  usuarioId: number
-  cursoId?: number | null
+  id?: string
+  usuarioId: string
+  cursoId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
@@ -664,14 +608,15 @@ export type CertificadoUpdateManyWithWhereWithoutTrilhaInput = {
 }
 
 export type CertificadoCreateManyUsuarioInput = {
-  id?: number
-  cursoId?: number | null
-  trilhaId?: number | null
+  id?: string
+  cursoId?: string | null
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
 
 export type CertificadoUpdateWithoutUsuarioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   curso?: Prisma.CursoUpdateOneWithoutCertificadosNestedInput
@@ -679,30 +624,31 @@ export type CertificadoUpdateWithoutUsuarioInput = {
 }
 
 export type CertificadoUncheckedUpdateWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoUncheckedUpdateManyWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoCreateManyCursoInput = {
-  id?: number
-  usuarioId: number
-  trilhaId?: number | null
+  id?: string
+  usuarioId: string
+  trilhaId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
 
 export type CertificadoUpdateWithoutCursoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutCertificadosNestedInput
@@ -710,30 +656,31 @@ export type CertificadoUpdateWithoutCursoInput = {
 }
 
 export type CertificadoUncheckedUpdateWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoUncheckedUpdateManyWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  trilhaId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  trilhaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoCreateManyTrilhaInput = {
-  id?: number
-  usuarioId: number
-  cursoId?: number | null
+  id?: string
+  usuarioId: string
+  cursoId?: string | null
   codigoVerificacao: string
   dataEmissao?: Date | string
 }
 
 export type CertificadoUpdateWithoutTrilhaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutCertificadosNestedInput
@@ -741,17 +688,17 @@ export type CertificadoUpdateWithoutTrilhaInput = {
 }
 
 export type CertificadoUncheckedUpdateWithoutTrilhaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CertificadoUncheckedUpdateManyWithoutTrilhaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   codigoVerificacao?: Prisma.StringFieldUpdateOperationsInput | string
   dataEmissao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -828,10 +775,10 @@ export type $CertificadoPayload<ExtArgs extends runtime.Types.Extensions.Interna
     trilha: Prisma.$TrilhaPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    usuarioId: number
-    cursoId: number | null
-    trilhaId: number | null
+    id: string
+    usuarioId: string
+    cursoId: string | null
+    trilhaId: string | null
     codigoVerificacao: string
     dataEmissao: Date
   }, ExtArgs["result"]["certificado"]>
@@ -1260,10 +1207,10 @@ export interface Prisma__CertificadoClient<T, Null = never, ExtArgs extends runt
  * Fields of the Certificado model
  */
 export interface CertificadoFieldRefs {
-  readonly id: Prisma.FieldRef<"Certificado", 'Int'>
-  readonly usuarioId: Prisma.FieldRef<"Certificado", 'Int'>
-  readonly cursoId: Prisma.FieldRef<"Certificado", 'Int'>
-  readonly trilhaId: Prisma.FieldRef<"Certificado", 'Int'>
+  readonly id: Prisma.FieldRef<"Certificado", 'String'>
+  readonly usuarioId: Prisma.FieldRef<"Certificado", 'String'>
+  readonly cursoId: Prisma.FieldRef<"Certificado", 'String'>
+  readonly trilhaId: Prisma.FieldRef<"Certificado", 'String'>
   readonly codigoVerificacao: Prisma.FieldRef<"Certificado", 'String'>
   readonly dataEmissao: Prisma.FieldRef<"Certificado", 'DateTime'>
 }

@@ -5,6 +5,8 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // Habilitar CORS
+  app.enableCors();
   // Configuração do ValidationPipe (importante para o Swagger ler as validações)
   app.useGlobalPipes(new ValidationPipe());
 

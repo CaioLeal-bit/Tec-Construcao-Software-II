@@ -20,36 +20,22 @@ export type MatriculaModel = runtime.Types.Result.DefaultSelection<Prisma.$Matri
 
 export type AggregateMatricula = {
   _count: MatriculaCountAggregateOutputType | null
-  _avg: MatriculaAvgAggregateOutputType | null
-  _sum: MatriculaSumAggregateOutputType | null
   _min: MatriculaMinAggregateOutputType | null
   _max: MatriculaMaxAggregateOutputType | null
 }
 
-export type MatriculaAvgAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-}
-
-export type MatriculaSumAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
-}
-
 export type MatriculaMinAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
   dataMatricula: Date | null
   dataConclusao: Date | null
 }
 
 export type MatriculaMaxAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
   dataMatricula: Date | null
   dataConclusao: Date | null
 }
@@ -63,18 +49,6 @@ export type MatriculaCountAggregateOutputType = {
   _all: number
 }
 
-
-export type MatriculaAvgAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
-}
-
-export type MatriculaSumAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
-}
 
 export type MatriculaMinAggregateInputType = {
   id?: true
@@ -139,18 +113,6 @@ export type MatriculaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: MatriculaAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: MatriculaSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: MatriculaMinAggregateInputType
@@ -181,21 +143,17 @@ export type MatriculaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   _count?: MatriculaCountAggregateInputType | true
-  _avg?: MatriculaAvgAggregateInputType
-  _sum?: MatriculaSumAggregateInputType
   _min?: MatriculaMinAggregateInputType
   _max?: MatriculaMaxAggregateInputType
 }
 
 export type MatriculaGroupByOutputType = {
-  id: number
-  usuarioId: number
-  cursoId: number
+  id: string
+  usuarioId: string
+  cursoId: string
   dataMatricula: Date
   dataConclusao: Date | null
   _count: MatriculaCountAggregateOutputType | null
-  _avg: MatriculaAvgAggregateOutputType | null
-  _sum: MatriculaSumAggregateOutputType | null
   _min: MatriculaMinAggregateOutputType | null
   _max: MatriculaMaxAggregateOutputType | null
 }
@@ -219,9 +177,9 @@ export type MatriculaWhereInput = {
   AND?: Prisma.MatriculaWhereInput | Prisma.MatriculaWhereInput[]
   OR?: Prisma.MatriculaWhereInput[]
   NOT?: Prisma.MatriculaWhereInput | Prisma.MatriculaWhereInput[]
-  id?: Prisma.IntFilter<"Matricula"> | number
-  usuarioId?: Prisma.IntFilter<"Matricula"> | number
-  cursoId?: Prisma.IntFilter<"Matricula"> | number
+  id?: Prisma.StringFilter<"Matricula"> | string
+  usuarioId?: Prisma.StringFilter<"Matricula"> | string
+  cursoId?: Prisma.StringFilter<"Matricula"> | string
   dataMatricula?: Prisma.DateTimeFilter<"Matricula"> | Date | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"Matricula"> | Date | string | null
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -239,12 +197,12 @@ export type MatriculaOrderByWithRelationInput = {
 }
 
 export type MatriculaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.MatriculaWhereInput | Prisma.MatriculaWhereInput[]
   OR?: Prisma.MatriculaWhereInput[]
   NOT?: Prisma.MatriculaWhereInput | Prisma.MatriculaWhereInput[]
-  usuarioId?: Prisma.IntFilter<"Matricula"> | number
-  cursoId?: Prisma.IntFilter<"Matricula"> | number
+  usuarioId?: Prisma.StringFilter<"Matricula"> | string
+  cursoId?: Prisma.StringFilter<"Matricula"> | string
   dataMatricula?: Prisma.DateTimeFilter<"Matricula"> | Date | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"Matricula"> | Date | string | null
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -258,24 +216,23 @@ export type MatriculaOrderByWithAggregationInput = {
   dataMatricula?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.MatriculaCountOrderByAggregateInput
-  _avg?: Prisma.MatriculaAvgOrderByAggregateInput
   _max?: Prisma.MatriculaMaxOrderByAggregateInput
   _min?: Prisma.MatriculaMinOrderByAggregateInput
-  _sum?: Prisma.MatriculaSumOrderByAggregateInput
 }
 
 export type MatriculaScalarWhereWithAggregatesInput = {
   AND?: Prisma.MatriculaScalarWhereWithAggregatesInput | Prisma.MatriculaScalarWhereWithAggregatesInput[]
   OR?: Prisma.MatriculaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MatriculaScalarWhereWithAggregatesInput | Prisma.MatriculaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Matricula"> | number
-  usuarioId?: Prisma.IntWithAggregatesFilter<"Matricula"> | number
-  cursoId?: Prisma.IntWithAggregatesFilter<"Matricula"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Matricula"> | string
+  usuarioId?: Prisma.StringWithAggregatesFilter<"Matricula"> | string
+  cursoId?: Prisma.StringWithAggregatesFilter<"Matricula"> | string
   dataMatricula?: Prisma.DateTimeWithAggregatesFilter<"Matricula"> | Date | string
   dataConclusao?: Prisma.DateTimeNullableWithAggregatesFilter<"Matricula"> | Date | string | null
 }
 
 export type MatriculaCreateInput = {
+  id?: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
   usuario: Prisma.UsuarioCreateNestedOneWithoutMatriculasInput
@@ -283,14 +240,15 @@ export type MatriculaCreateInput = {
 }
 
 export type MatriculaUncheckedCreateInput = {
-  id?: number
-  usuarioId: number
-  cursoId: number
+  id?: string
+  usuarioId: string
+  cursoId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
 
 export type MatriculaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutMatriculasNestedInput
@@ -298,30 +256,31 @@ export type MatriculaUpdateInput = {
 }
 
 export type MatriculaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MatriculaCreateManyInput = {
-  id?: number
-  usuarioId: number
-  cursoId: number
+  id?: string
+  usuarioId: string
+  cursoId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
 
 export type MatriculaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MatriculaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -344,12 +303,6 @@ export type MatriculaCountOrderByAggregateInput = {
   dataConclusao?: Prisma.SortOrder
 }
 
-export type MatriculaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
-}
-
 export type MatriculaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
@@ -364,12 +317,6 @@ export type MatriculaMinOrderByAggregateInput = {
   cursoId?: Prisma.SortOrder
   dataMatricula?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrder
-}
-
-export type MatriculaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
 }
 
 export type MatriculaCreateNestedManyWithoutUsuarioInput = {
@@ -457,14 +404,15 @@ export type MatriculaUncheckedUpdateManyWithoutCursoNestedInput = {
 }
 
 export type MatriculaCreateWithoutUsuarioInput = {
+  id?: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
   curso: Prisma.CursoCreateNestedOneWithoutMatriculasInput
 }
 
 export type MatriculaUncheckedCreateWithoutUsuarioInput = {
-  id?: number
-  cursoId: number
+  id?: string
+  cursoId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
@@ -499,22 +447,23 @@ export type MatriculaScalarWhereInput = {
   AND?: Prisma.MatriculaScalarWhereInput | Prisma.MatriculaScalarWhereInput[]
   OR?: Prisma.MatriculaScalarWhereInput[]
   NOT?: Prisma.MatriculaScalarWhereInput | Prisma.MatriculaScalarWhereInput[]
-  id?: Prisma.IntFilter<"Matricula"> | number
-  usuarioId?: Prisma.IntFilter<"Matricula"> | number
-  cursoId?: Prisma.IntFilter<"Matricula"> | number
+  id?: Prisma.StringFilter<"Matricula"> | string
+  usuarioId?: Prisma.StringFilter<"Matricula"> | string
+  cursoId?: Prisma.StringFilter<"Matricula"> | string
   dataMatricula?: Prisma.DateTimeFilter<"Matricula"> | Date | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"Matricula"> | Date | string | null
 }
 
 export type MatriculaCreateWithoutCursoInput = {
+  id?: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
   usuario: Prisma.UsuarioCreateNestedOneWithoutMatriculasInput
 }
 
 export type MatriculaUncheckedCreateWithoutCursoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
@@ -546,55 +495,57 @@ export type MatriculaUpdateManyWithWhereWithoutCursoInput = {
 }
 
 export type MatriculaCreateManyUsuarioInput = {
-  id?: number
-  cursoId: number
+  id?: string
+  cursoId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
 
 export type MatriculaUpdateWithoutUsuarioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   curso?: Prisma.CursoUpdateOneRequiredWithoutMatriculasNestedInput
 }
 
 export type MatriculaUncheckedUpdateWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MatriculaUncheckedUpdateManyWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MatriculaCreateManyCursoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataMatricula?: Date | string
   dataConclusao?: Date | string | null
 }
 
 export type MatriculaUpdateWithoutCursoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutMatriculasNestedInput
 }
 
 export type MatriculaUncheckedUpdateWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type MatriculaUncheckedUpdateManyWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataMatricula?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -660,9 +611,9 @@ export type $MatriculaPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     curso: Prisma.$CursoPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    usuarioId: number
-    cursoId: number
+    id: string
+    usuarioId: string
+    cursoId: string
     dataMatricula: Date
     dataConclusao: Date | null
   }, ExtArgs["result"]["matricula"]>
@@ -1090,9 +1041,9 @@ export interface Prisma__MatriculaClient<T, Null = never, ExtArgs extends runtim
  * Fields of the Matricula model
  */
 export interface MatriculaFieldRefs {
-  readonly id: Prisma.FieldRef<"Matricula", 'Int'>
-  readonly usuarioId: Prisma.FieldRef<"Matricula", 'Int'>
-  readonly cursoId: Prisma.FieldRef<"Matricula", 'Int'>
+  readonly id: Prisma.FieldRef<"Matricula", 'String'>
+  readonly usuarioId: Prisma.FieldRef<"Matricula", 'String'>
+  readonly cursoId: Prisma.FieldRef<"Matricula", 'String'>
   readonly dataMatricula: Prisma.FieldRef<"Matricula", 'DateTime'>
   readonly dataConclusao: Prisma.FieldRef<"Matricula", 'DateTime'>
 }

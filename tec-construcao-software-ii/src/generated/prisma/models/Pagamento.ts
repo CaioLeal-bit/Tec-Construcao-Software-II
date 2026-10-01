@@ -27,20 +27,16 @@ export type AggregatePagamento = {
 }
 
 export type PagamentoAvgAggregateOutputType = {
-  id: number | null
-  assinaturaId: number | null
   valorPago: number | null
 }
 
 export type PagamentoSumAggregateOutputType = {
-  id: number | null
-  assinaturaId: number | null
   valorPago: number | null
 }
 
 export type PagamentoMinAggregateOutputType = {
-  id: number | null
-  assinaturaId: number | null
+  id: string | null
+  assinaturaId: string | null
   valorPago: number | null
   dataPagamento: Date | null
   metodoPagamento: string | null
@@ -49,8 +45,8 @@ export type PagamentoMinAggregateOutputType = {
 }
 
 export type PagamentoMaxAggregateOutputType = {
-  id: number | null
-  assinaturaId: number | null
+  id: string | null
+  assinaturaId: string | null
   valorPago: number | null
   dataPagamento: Date | null
   metodoPagamento: string | null
@@ -71,14 +67,10 @@ export type PagamentoCountAggregateOutputType = {
 
 
 export type PagamentoAvgAggregateInputType = {
-  id?: true
-  assinaturaId?: true
   valorPago?: true
 }
 
 export type PagamentoSumAggregateInputType = {
-  id?: true
-  assinaturaId?: true
   valorPago?: true
 }
 
@@ -200,8 +192,8 @@ export type PagamentoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 export type PagamentoGroupByOutputType = {
-  id: number
-  assinaturaId: number
+  id: string
+  assinaturaId: string
   valorPago: number
   dataPagamento: Date
   metodoPagamento: string
@@ -233,8 +225,8 @@ export type PagamentoWhereInput = {
   AND?: Prisma.PagamentoWhereInput | Prisma.PagamentoWhereInput[]
   OR?: Prisma.PagamentoWhereInput[]
   NOT?: Prisma.PagamentoWhereInput | Prisma.PagamentoWhereInput[]
-  id?: Prisma.IntFilter<"Pagamento"> | number
-  assinaturaId?: Prisma.IntFilter<"Pagamento"> | number
+  id?: Prisma.StringFilter<"Pagamento"> | string
+  assinaturaId?: Prisma.StringFilter<"Pagamento"> | string
   valorPago?: Prisma.FloatFilter<"Pagamento"> | number
   dataPagamento?: Prisma.DateTimeFilter<"Pagamento"> | Date | string
   metodoPagamento?: Prisma.StringFilter<"Pagamento"> | string
@@ -255,11 +247,11 @@ export type PagamentoOrderByWithRelationInput = {
 }
 
 export type PagamentoWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.PagamentoWhereInput | Prisma.PagamentoWhereInput[]
   OR?: Prisma.PagamentoWhereInput[]
   NOT?: Prisma.PagamentoWhereInput | Prisma.PagamentoWhereInput[]
-  assinaturaId?: Prisma.IntFilter<"Pagamento"> | number
+  assinaturaId?: Prisma.StringFilter<"Pagamento"> | string
   valorPago?: Prisma.FloatFilter<"Pagamento"> | number
   dataPagamento?: Prisma.DateTimeFilter<"Pagamento"> | Date | string
   metodoPagamento?: Prisma.StringFilter<"Pagamento"> | string
@@ -287,8 +279,8 @@ export type PagamentoScalarWhereWithAggregatesInput = {
   AND?: Prisma.PagamentoScalarWhereWithAggregatesInput | Prisma.PagamentoScalarWhereWithAggregatesInput[]
   OR?: Prisma.PagamentoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PagamentoScalarWhereWithAggregatesInput | Prisma.PagamentoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Pagamento"> | number
-  assinaturaId?: Prisma.IntWithAggregatesFilter<"Pagamento"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Pagamento"> | string
+  assinaturaId?: Prisma.StringWithAggregatesFilter<"Pagamento"> | string
   valorPago?: Prisma.FloatWithAggregatesFilter<"Pagamento"> | number
   dataPagamento?: Prisma.DateTimeWithAggregatesFilter<"Pagamento"> | Date | string
   metodoPagamento?: Prisma.StringWithAggregatesFilter<"Pagamento"> | string
@@ -297,6 +289,7 @@ export type PagamentoScalarWhereWithAggregatesInput = {
 }
 
 export type PagamentoCreateInput = {
+  id?: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -306,8 +299,8 @@ export type PagamentoCreateInput = {
 }
 
 export type PagamentoUncheckedCreateInput = {
-  id?: number
-  assinaturaId: number
+  id?: string
+  assinaturaId: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -316,6 +309,7 @@ export type PagamentoUncheckedCreateInput = {
 }
 
 export type PagamentoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -325,8 +319,8 @@ export type PagamentoUpdateInput = {
 }
 
 export type PagamentoUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  assinaturaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  assinaturaId?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -335,8 +329,8 @@ export type PagamentoUncheckedUpdateInput = {
 }
 
 export type PagamentoCreateManyInput = {
-  id?: number
-  assinaturaId: number
+  id?: string
+  assinaturaId: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -345,6 +339,7 @@ export type PagamentoCreateManyInput = {
 }
 
 export type PagamentoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -353,8 +348,8 @@ export type PagamentoUpdateManyMutationInput = {
 }
 
 export type PagamentoUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  assinaturaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  assinaturaId?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -383,8 +378,6 @@ export type PagamentoCountOrderByAggregateInput = {
 }
 
 export type PagamentoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  assinaturaId?: Prisma.SortOrder
   valorPago?: Prisma.SortOrder
 }
 
@@ -409,8 +402,6 @@ export type PagamentoMinOrderByAggregateInput = {
 }
 
 export type PagamentoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  assinaturaId?: Prisma.SortOrder
   valorPago?: Prisma.SortOrder
 }
 
@@ -457,6 +448,7 @@ export type PagamentoUncheckedUpdateManyWithoutAssinaturaNestedInput = {
 }
 
 export type PagamentoCreateWithoutAssinaturaInput = {
+  id?: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -465,7 +457,7 @@ export type PagamentoCreateWithoutAssinaturaInput = {
 }
 
 export type PagamentoUncheckedCreateWithoutAssinaturaInput = {
-  id?: number
+  id?: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -503,8 +495,8 @@ export type PagamentoScalarWhereInput = {
   AND?: Prisma.PagamentoScalarWhereInput | Prisma.PagamentoScalarWhereInput[]
   OR?: Prisma.PagamentoScalarWhereInput[]
   NOT?: Prisma.PagamentoScalarWhereInput | Prisma.PagamentoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Pagamento"> | number
-  assinaturaId?: Prisma.IntFilter<"Pagamento"> | number
+  id?: Prisma.StringFilter<"Pagamento"> | string
+  assinaturaId?: Prisma.StringFilter<"Pagamento"> | string
   valorPago?: Prisma.FloatFilter<"Pagamento"> | number
   dataPagamento?: Prisma.DateTimeFilter<"Pagamento"> | Date | string
   metodoPagamento?: Prisma.StringFilter<"Pagamento"> | string
@@ -513,7 +505,7 @@ export type PagamentoScalarWhereInput = {
 }
 
 export type PagamentoCreateManyAssinaturaInput = {
-  id?: number
+  id?: string
   valorPago: number
   dataPagamento?: Date | string
   metodoPagamento: string
@@ -522,6 +514,7 @@ export type PagamentoCreateManyAssinaturaInput = {
 }
 
 export type PagamentoUpdateWithoutAssinaturaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -530,7 +523,7 @@ export type PagamentoUpdateWithoutAssinaturaInput = {
 }
 
 export type PagamentoUncheckedUpdateWithoutAssinaturaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -539,7 +532,7 @@ export type PagamentoUncheckedUpdateWithoutAssinaturaInput = {
 }
 
 export type PagamentoUncheckedUpdateManyWithoutAssinaturaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   valorPago?: Prisma.FloatFieldUpdateOperationsInput | number
   dataPagamento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   metodoPagamento?: Prisma.StringFieldUpdateOperationsInput | string
@@ -609,8 +602,8 @@ export type $PagamentoPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     assinatura: Prisma.$AssinaturaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    assinaturaId: number
+    id: string
+    assinaturaId: string
     valorPago: number
     dataPagamento: Date
     metodoPagamento: string
@@ -1040,8 +1033,8 @@ export interface Prisma__PagamentoClient<T, Null = never, ExtArgs extends runtim
  * Fields of the Pagamento model
  */
 export interface PagamentoFieldRefs {
-  readonly id: Prisma.FieldRef<"Pagamento", 'Int'>
-  readonly assinaturaId: Prisma.FieldRef<"Pagamento", 'Int'>
+  readonly id: Prisma.FieldRef<"Pagamento", 'String'>
+  readonly assinaturaId: Prisma.FieldRef<"Pagamento", 'String'>
   readonly valorPago: Prisma.FieldRef<"Pagamento", 'Float'>
   readonly dataPagamento: Prisma.FieldRef<"Pagamento", 'DateTime'>
   readonly metodoPagamento: Prisma.FieldRef<"Pagamento", 'String'>

@@ -27,19 +27,17 @@ export type AggregatePlano = {
 }
 
 export type PlanoAvgAggregateOutputType = {
-  id: number | null
   preco: number | null
   duracaoMeses: number | null
 }
 
 export type PlanoSumAggregateOutputType = {
-  id: number | null
   preco: number | null
   duracaoMeses: number | null
 }
 
 export type PlanoMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   nome: string | null
   descricao: string | null
   preco: number | null
@@ -47,7 +45,7 @@ export type PlanoMinAggregateOutputType = {
 }
 
 export type PlanoMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   nome: string | null
   descricao: string | null
   preco: number | null
@@ -65,13 +63,11 @@ export type PlanoCountAggregateOutputType = {
 
 
 export type PlanoAvgAggregateInputType = {
-  id?: true
   preco?: true
   duracaoMeses?: true
 }
 
 export type PlanoSumAggregateInputType = {
-  id?: true
   preco?: true
   duracaoMeses?: true
 }
@@ -188,7 +184,7 @@ export type PlanoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 export type PlanoGroupByOutputType = {
-  id: number
+  id: string
   nome: string
   descricao: string | null
   preco: number
@@ -219,7 +215,7 @@ export type PlanoWhereInput = {
   AND?: Prisma.PlanoWhereInput | Prisma.PlanoWhereInput[]
   OR?: Prisma.PlanoWhereInput[]
   NOT?: Prisma.PlanoWhereInput | Prisma.PlanoWhereInput[]
-  id?: Prisma.IntFilter<"Plano"> | number
+  id?: Prisma.StringFilter<"Plano"> | string
   nome?: Prisma.StringFilter<"Plano"> | string
   descricao?: Prisma.StringNullableFilter<"Plano"> | string | null
   preco?: Prisma.FloatFilter<"Plano"> | number
@@ -237,7 +233,7 @@ export type PlanoOrderByWithRelationInput = {
 }
 
 export type PlanoWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.PlanoWhereInput | Prisma.PlanoWhereInput[]
   OR?: Prisma.PlanoWhereInput[]
   NOT?: Prisma.PlanoWhereInput | Prisma.PlanoWhereInput[]
@@ -265,7 +261,7 @@ export type PlanoScalarWhereWithAggregatesInput = {
   AND?: Prisma.PlanoScalarWhereWithAggregatesInput | Prisma.PlanoScalarWhereWithAggregatesInput[]
   OR?: Prisma.PlanoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PlanoScalarWhereWithAggregatesInput | Prisma.PlanoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Plano"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Plano"> | string
   nome?: Prisma.StringWithAggregatesFilter<"Plano"> | string
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Plano"> | string | null
   preco?: Prisma.FloatWithAggregatesFilter<"Plano"> | number
@@ -273,6 +269,7 @@ export type PlanoScalarWhereWithAggregatesInput = {
 }
 
 export type PlanoCreateInput = {
+  id?: string
   nome: string
   descricao?: string | null
   preco: number
@@ -281,7 +278,7 @@ export type PlanoCreateInput = {
 }
 
 export type PlanoUncheckedCreateInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   preco: number
@@ -290,6 +287,7 @@ export type PlanoUncheckedCreateInput = {
 }
 
 export type PlanoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -298,7 +296,7 @@ export type PlanoUpdateInput = {
 }
 
 export type PlanoUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -307,7 +305,7 @@ export type PlanoUncheckedUpdateInput = {
 }
 
 export type PlanoCreateManyInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   preco: number
@@ -315,6 +313,7 @@ export type PlanoCreateManyInput = {
 }
 
 export type PlanoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -322,7 +321,7 @@ export type PlanoUpdateManyMutationInput = {
 }
 
 export type PlanoUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -338,7 +337,6 @@ export type PlanoCountOrderByAggregateInput = {
 }
 
 export type PlanoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   preco?: Prisma.SortOrder
   duracaoMeses?: Prisma.SortOrder
 }
@@ -360,7 +358,6 @@ export type PlanoMinOrderByAggregateInput = {
 }
 
 export type PlanoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   preco?: Prisma.SortOrder
   duracaoMeses?: Prisma.SortOrder
 }
@@ -385,6 +382,7 @@ export type PlanoUpdateOneRequiredWithoutAssinaturasNestedInput = {
 }
 
 export type PlanoCreateWithoutAssinaturasInput = {
+  id?: string
   nome: string
   descricao?: string | null
   preco: number
@@ -392,7 +390,7 @@ export type PlanoCreateWithoutAssinaturasInput = {
 }
 
 export type PlanoUncheckedCreateWithoutAssinaturasInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   preco: number
@@ -416,6 +414,7 @@ export type PlanoUpdateToOneWithWhereWithoutAssinaturasInput = {
 }
 
 export type PlanoUpdateWithoutAssinaturasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -423,7 +422,7 @@ export type PlanoUpdateWithoutAssinaturasInput = {
 }
 
 export type PlanoUncheckedUpdateWithoutAssinaturasInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   preco?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -509,7 +508,7 @@ export type $PlanoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     assinaturas: Prisma.$AssinaturaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     nome: string
     descricao: string | null
     preco: number
@@ -938,7 +937,7 @@ export interface Prisma__PlanoClient<T, Null = never, ExtArgs extends runtime.Ty
  * Fields of the Plano model
  */
 export interface PlanoFieldRefs {
-  readonly id: Prisma.FieldRef<"Plano", 'Int'>
+  readonly id: Prisma.FieldRef<"Plano", 'String'>
   readonly nome: Prisma.FieldRef<"Plano", 'String'>
   readonly descricao: Prisma.FieldRef<"Plano", 'String'>
   readonly preco: Prisma.FieldRef<"Plano", 'Float'>

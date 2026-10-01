@@ -20,28 +20,18 @@ export type CategoriaModel = runtime.Types.Result.DefaultSelection<Prisma.$Categ
 
 export type AggregateCategoria = {
   _count: CategoriaCountAggregateOutputType | null
-  _avg: CategoriaAvgAggregateOutputType | null
-  _sum: CategoriaSumAggregateOutputType | null
   _min: CategoriaMinAggregateOutputType | null
   _max: CategoriaMaxAggregateOutputType | null
 }
 
-export type CategoriaAvgAggregateOutputType = {
-  id: number | null
-}
-
-export type CategoriaSumAggregateOutputType = {
-  id: number | null
-}
-
 export type CategoriaMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   nome: string | null
   descricao: string | null
 }
 
 export type CategoriaMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   nome: string | null
   descricao: string | null
 }
@@ -53,14 +43,6 @@ export type CategoriaCountAggregateOutputType = {
   _all: number
 }
 
-
-export type CategoriaAvgAggregateInputType = {
-  id?: true
-}
-
-export type CategoriaSumAggregateInputType = {
-  id?: true
-}
 
 export type CategoriaMinAggregateInputType = {
   id?: true
@@ -119,18 +101,6 @@ export type CategoriaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: CategoriaAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: CategoriaSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: CategoriaMinAggregateInputType
@@ -161,19 +131,15 @@ export type CategoriaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   _count?: CategoriaCountAggregateInputType | true
-  _avg?: CategoriaAvgAggregateInputType
-  _sum?: CategoriaSumAggregateInputType
   _min?: CategoriaMinAggregateInputType
   _max?: CategoriaMaxAggregateInputType
 }
 
 export type CategoriaGroupByOutputType = {
-  id: number
+  id: string
   nome: string
   descricao: string | null
   _count: CategoriaCountAggregateOutputType | null
-  _avg: CategoriaAvgAggregateOutputType | null
-  _sum: CategoriaSumAggregateOutputType | null
   _min: CategoriaMinAggregateOutputType | null
   _max: CategoriaMaxAggregateOutputType | null
 }
@@ -197,7 +163,7 @@ export type CategoriaWhereInput = {
   AND?: Prisma.CategoriaWhereInput | Prisma.CategoriaWhereInput[]
   OR?: Prisma.CategoriaWhereInput[]
   NOT?: Prisma.CategoriaWhereInput | Prisma.CategoriaWhereInput[]
-  id?: Prisma.IntFilter<"Categoria"> | number
+  id?: Prisma.StringFilter<"Categoria"> | string
   nome?: Prisma.StringFilter<"Categoria"> | string
   descricao?: Prisma.StringNullableFilter<"Categoria"> | string | null
   cursos?: Prisma.CursoListRelationFilter
@@ -213,7 +179,7 @@ export type CategoriaOrderByWithRelationInput = {
 }
 
 export type CategoriaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   nome?: string
   AND?: Prisma.CategoriaWhereInput | Prisma.CategoriaWhereInput[]
   OR?: Prisma.CategoriaWhereInput[]
@@ -228,22 +194,21 @@ export type CategoriaOrderByWithAggregationInput = {
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CategoriaCountOrderByAggregateInput
-  _avg?: Prisma.CategoriaAvgOrderByAggregateInput
   _max?: Prisma.CategoriaMaxOrderByAggregateInput
   _min?: Prisma.CategoriaMinOrderByAggregateInput
-  _sum?: Prisma.CategoriaSumOrderByAggregateInput
 }
 
 export type CategoriaScalarWhereWithAggregatesInput = {
   AND?: Prisma.CategoriaScalarWhereWithAggregatesInput | Prisma.CategoriaScalarWhereWithAggregatesInput[]
   OR?: Prisma.CategoriaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CategoriaScalarWhereWithAggregatesInput | Prisma.CategoriaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Categoria"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Categoria"> | string
   nome?: Prisma.StringWithAggregatesFilter<"Categoria"> | string
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Categoria"> | string | null
 }
 
 export type CategoriaCreateInput = {
+  id?: string
   nome: string
   descricao?: string | null
   cursos?: Prisma.CursoCreateNestedManyWithoutCategoriaInput
@@ -251,7 +216,7 @@ export type CategoriaCreateInput = {
 }
 
 export type CategoriaUncheckedCreateInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutCategoriaInput
@@ -259,6 +224,7 @@ export type CategoriaUncheckedCreateInput = {
 }
 
 export type CategoriaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cursos?: Prisma.CursoUpdateManyWithoutCategoriaNestedInput
@@ -266,7 +232,7 @@ export type CategoriaUpdateInput = {
 }
 
 export type CategoriaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cursos?: Prisma.CursoUncheckedUpdateManyWithoutCategoriaNestedInput
@@ -274,18 +240,19 @@ export type CategoriaUncheckedUpdateInput = {
 }
 
 export type CategoriaCreateManyInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
 }
 
 export type CategoriaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CategoriaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -294,10 +261,6 @@ export type CategoriaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
-}
-
-export type CategoriaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
 }
 
 export type CategoriaMaxOrderByAggregateInput = {
@@ -310,10 +273,6 @@ export type CategoriaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
-}
-
-export type CategoriaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
 }
 
 export type CategoriaScalarRelationFilter = {
@@ -354,13 +313,14 @@ export type CategoriaUpdateOneRequiredWithoutTrilhasNestedInput = {
 }
 
 export type CategoriaCreateWithoutCursosInput = {
+  id?: string
   nome: string
   descricao?: string | null
   trilhas?: Prisma.TrilhaCreateNestedManyWithoutCategoriaInput
 }
 
 export type CategoriaUncheckedCreateWithoutCursosInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   trilhas?: Prisma.TrilhaUncheckedCreateNestedManyWithoutCategoriaInput
@@ -383,26 +343,28 @@ export type CategoriaUpdateToOneWithWhereWithoutCursosInput = {
 }
 
 export type CategoriaUpdateWithoutCursosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trilhas?: Prisma.TrilhaUpdateManyWithoutCategoriaNestedInput
 }
 
 export type CategoriaUncheckedUpdateWithoutCursosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trilhas?: Prisma.TrilhaUncheckedUpdateManyWithoutCategoriaNestedInput
 }
 
 export type CategoriaCreateWithoutTrilhasInput = {
+  id?: string
   nome: string
   descricao?: string | null
   cursos?: Prisma.CursoCreateNestedManyWithoutCategoriaInput
 }
 
 export type CategoriaUncheckedCreateWithoutTrilhasInput = {
-  id?: number
+  id?: string
   nome: string
   descricao?: string | null
   cursos?: Prisma.CursoUncheckedCreateNestedManyWithoutCategoriaInput
@@ -425,13 +387,14 @@ export type CategoriaUpdateToOneWithWhereWithoutTrilhasInput = {
 }
 
 export type CategoriaUpdateWithoutTrilhasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cursos?: Prisma.CursoUpdateManyWithoutCategoriaNestedInput
 }
 
 export type CategoriaUncheckedUpdateWithoutTrilhasInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cursos?: Prisma.CursoUncheckedUpdateManyWithoutCategoriaNestedInput
@@ -520,7 +483,7 @@ export type $CategoriaPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     trilhas: Prisma.$TrilhaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     nome: string
     descricao: string | null
   }, ExtArgs["result"]["categoria"]>
@@ -948,7 +911,7 @@ export interface Prisma__CategoriaClient<T, Null = never, ExtArgs extends runtim
  * Fields of the Categoria model
  */
 export interface CategoriaFieldRefs {
-  readonly id: Prisma.FieldRef<"Categoria", 'Int'>
+  readonly id: Prisma.FieldRef<"Categoria", 'String'>
   readonly nome: Prisma.FieldRef<"Categoria", 'String'>
   readonly descricao: Prisma.FieldRef<"Categoria", 'String'>
 }

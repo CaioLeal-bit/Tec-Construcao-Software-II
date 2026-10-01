@@ -20,37 +20,28 @@ export type ProgressoAulaModel = runtime.Types.Result.DefaultSelection<Prisma.$P
 
 export type AggregateProgressoAula = {
   _count: ProgressoAulaCountAggregateOutputType | null
-  _avg: ProgressoAulaAvgAggregateOutputType | null
-  _sum: ProgressoAulaSumAggregateOutputType | null
   _min: ProgressoAulaMinAggregateOutputType | null
   _max: ProgressoAulaMaxAggregateOutputType | null
 }
 
-export type ProgressoAulaAvgAggregateOutputType = {
-  usuarioId: number | null
-  aulaId: number | null
-}
-
-export type ProgressoAulaSumAggregateOutputType = {
-  usuarioId: number | null
-  aulaId: number | null
-}
-
 export type ProgressoAulaMinAggregateOutputType = {
-  usuarioId: number | null
-  aulaId: number | null
+  id: string | null
+  usuarioId: string | null
+  aulaId: string | null
   dataConclusao: Date | null
   status: string | null
 }
 
 export type ProgressoAulaMaxAggregateOutputType = {
-  usuarioId: number | null
-  aulaId: number | null
+  id: string | null
+  usuarioId: string | null
+  aulaId: string | null
   dataConclusao: Date | null
   status: string | null
 }
 
 export type ProgressoAulaCountAggregateOutputType = {
+  id: number
   usuarioId: number
   aulaId: number
   dataConclusao: number
@@ -59,17 +50,8 @@ export type ProgressoAulaCountAggregateOutputType = {
 }
 
 
-export type ProgressoAulaAvgAggregateInputType = {
-  usuarioId?: true
-  aulaId?: true
-}
-
-export type ProgressoAulaSumAggregateInputType = {
-  usuarioId?: true
-  aulaId?: true
-}
-
 export type ProgressoAulaMinAggregateInputType = {
+  id?: true
   usuarioId?: true
   aulaId?: true
   dataConclusao?: true
@@ -77,6 +59,7 @@ export type ProgressoAulaMinAggregateInputType = {
 }
 
 export type ProgressoAulaMaxAggregateInputType = {
+  id?: true
   usuarioId?: true
   aulaId?: true
   dataConclusao?: true
@@ -84,6 +67,7 @@ export type ProgressoAulaMaxAggregateInputType = {
 }
 
 export type ProgressoAulaCountAggregateInputType = {
+  id?: true
   usuarioId?: true
   aulaId?: true
   dataConclusao?: true
@@ -129,18 +113,6 @@ export type ProgressoAulaAggregateArgs<ExtArgs extends runtime.Types.Extensions.
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: ProgressoAulaAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: ProgressoAulaSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: ProgressoAulaMinAggregateInputType
@@ -171,20 +143,17 @@ export type ProgressoAulaGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   _count?: ProgressoAulaCountAggregateInputType | true
-  _avg?: ProgressoAulaAvgAggregateInputType
-  _sum?: ProgressoAulaSumAggregateInputType
   _min?: ProgressoAulaMinAggregateInputType
   _max?: ProgressoAulaMaxAggregateInputType
 }
 
 export type ProgressoAulaGroupByOutputType = {
-  usuarioId: number
-  aulaId: number
+  id: string
+  usuarioId: string
+  aulaId: string
   dataConclusao: Date | null
   status: string
   _count: ProgressoAulaCountAggregateOutputType | null
-  _avg: ProgressoAulaAvgAggregateOutputType | null
-  _sum: ProgressoAulaSumAggregateOutputType | null
   _min: ProgressoAulaMinAggregateOutputType | null
   _max: ProgressoAulaMaxAggregateOutputType | null
 }
@@ -208,8 +177,9 @@ export type ProgressoAulaWhereInput = {
   AND?: Prisma.ProgressoAulaWhereInput | Prisma.ProgressoAulaWhereInput[]
   OR?: Prisma.ProgressoAulaWhereInput[]
   NOT?: Prisma.ProgressoAulaWhereInput | Prisma.ProgressoAulaWhereInput[]
-  usuarioId?: Prisma.IntFilter<"ProgressoAula"> | number
-  aulaId?: Prisma.IntFilter<"ProgressoAula"> | number
+  id?: Prisma.StringFilter<"ProgressoAula"> | string
+  usuarioId?: Prisma.StringFilter<"ProgressoAula"> | string
+  aulaId?: Prisma.StringFilter<"ProgressoAula"> | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"ProgressoAula"> | Date | string | null
   status?: Prisma.StringFilter<"ProgressoAula"> | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -217,6 +187,7 @@ export type ProgressoAulaWhereInput = {
 }
 
 export type ProgressoAulaOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   aulaId?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -226,41 +197,42 @@ export type ProgressoAulaOrderByWithRelationInput = {
 }
 
 export type ProgressoAulaWhereUniqueInput = Prisma.AtLeast<{
-  usuarioId_aulaId?: Prisma.ProgressoAulaUsuarioIdAulaIdCompoundUniqueInput
+  id?: string
   AND?: Prisma.ProgressoAulaWhereInput | Prisma.ProgressoAulaWhereInput[]
   OR?: Prisma.ProgressoAulaWhereInput[]
   NOT?: Prisma.ProgressoAulaWhereInput | Prisma.ProgressoAulaWhereInput[]
-  usuarioId?: Prisma.IntFilter<"ProgressoAula"> | number
-  aulaId?: Prisma.IntFilter<"ProgressoAula"> | number
+  usuarioId?: Prisma.StringFilter<"ProgressoAula"> | string
+  aulaId?: Prisma.StringFilter<"ProgressoAula"> | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"ProgressoAula"> | Date | string | null
   status?: Prisma.StringFilter<"ProgressoAula"> | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   aula?: Prisma.XOR<Prisma.AulaScalarRelationFilter, Prisma.AulaWhereInput>
-}, "usuarioId_aulaId">
+}, "id">
 
 export type ProgressoAulaOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   aulaId?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   _count?: Prisma.ProgressoAulaCountOrderByAggregateInput
-  _avg?: Prisma.ProgressoAulaAvgOrderByAggregateInput
   _max?: Prisma.ProgressoAulaMaxOrderByAggregateInput
   _min?: Prisma.ProgressoAulaMinOrderByAggregateInput
-  _sum?: Prisma.ProgressoAulaSumOrderByAggregateInput
 }
 
 export type ProgressoAulaScalarWhereWithAggregatesInput = {
   AND?: Prisma.ProgressoAulaScalarWhereWithAggregatesInput | Prisma.ProgressoAulaScalarWhereWithAggregatesInput[]
   OR?: Prisma.ProgressoAulaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProgressoAulaScalarWhereWithAggregatesInput | Prisma.ProgressoAulaScalarWhereWithAggregatesInput[]
-  usuarioId?: Prisma.IntWithAggregatesFilter<"ProgressoAula"> | number
-  aulaId?: Prisma.IntWithAggregatesFilter<"ProgressoAula"> | number
+  id?: Prisma.StringWithAggregatesFilter<"ProgressoAula"> | string
+  usuarioId?: Prisma.StringWithAggregatesFilter<"ProgressoAula"> | string
+  aulaId?: Prisma.StringWithAggregatesFilter<"ProgressoAula"> | string
   dataConclusao?: Prisma.DateTimeNullableWithAggregatesFilter<"ProgressoAula"> | Date | string | null
   status?: Prisma.StringWithAggregatesFilter<"ProgressoAula"> | string
 }
 
 export type ProgressoAulaCreateInput = {
+  id?: string
   dataConclusao?: Date | string | null
   status: string
   usuario: Prisma.UsuarioCreateNestedOneWithoutProgressoAulasInput
@@ -268,13 +240,15 @@ export type ProgressoAulaCreateInput = {
 }
 
 export type ProgressoAulaUncheckedCreateInput = {
-  usuarioId: number
-  aulaId: number
+  id?: string
+  usuarioId: string
+  aulaId: string
   dataConclusao?: Date | string | null
   status: string
 }
 
 export type ProgressoAulaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProgressoAulasNestedInput
@@ -282,27 +256,31 @@ export type ProgressoAulaUpdateInput = {
 }
 
 export type ProgressoAulaUncheckedUpdateInput = {
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  aulaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  aulaId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProgressoAulaCreateManyInput = {
-  usuarioId: number
-  aulaId: number
+  id?: string
+  usuarioId: string
+  aulaId: string
   dataConclusao?: Date | string | null
   status: string
 }
 
 export type ProgressoAulaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProgressoAulaUncheckedUpdateManyInput = {
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  aulaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  aulaId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -317,24 +295,16 @@ export type ProgressoAulaOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type ProgressoAulaUsuarioIdAulaIdCompoundUniqueInput = {
-  usuarioId: number
-  aulaId: number
-}
-
 export type ProgressoAulaCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   aulaId?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrder
   status?: Prisma.SortOrder
 }
 
-export type ProgressoAulaAvgOrderByAggregateInput = {
-  usuarioId?: Prisma.SortOrder
-  aulaId?: Prisma.SortOrder
-}
-
 export type ProgressoAulaMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   aulaId?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrder
@@ -342,15 +312,11 @@ export type ProgressoAulaMaxOrderByAggregateInput = {
 }
 
 export type ProgressoAulaMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   aulaId?: Prisma.SortOrder
   dataConclusao?: Prisma.SortOrder
   status?: Prisma.SortOrder
-}
-
-export type ProgressoAulaSumOrderByAggregateInput = {
-  usuarioId?: Prisma.SortOrder
-  aulaId?: Prisma.SortOrder
 }
 
 export type ProgressoAulaCreateNestedManyWithoutUsuarioInput = {
@@ -438,13 +404,15 @@ export type ProgressoAulaUncheckedUpdateManyWithoutAulaNestedInput = {
 }
 
 export type ProgressoAulaCreateWithoutUsuarioInput = {
+  id?: string
   dataConclusao?: Date | string | null
   status: string
   aula: Prisma.AulaCreateNestedOneWithoutProgressoAulasInput
 }
 
 export type ProgressoAulaUncheckedCreateWithoutUsuarioInput = {
-  aulaId: number
+  id?: string
+  aulaId: string
   dataConclusao?: Date | string | null
   status: string
 }
@@ -479,20 +447,23 @@ export type ProgressoAulaScalarWhereInput = {
   AND?: Prisma.ProgressoAulaScalarWhereInput | Prisma.ProgressoAulaScalarWhereInput[]
   OR?: Prisma.ProgressoAulaScalarWhereInput[]
   NOT?: Prisma.ProgressoAulaScalarWhereInput | Prisma.ProgressoAulaScalarWhereInput[]
-  usuarioId?: Prisma.IntFilter<"ProgressoAula"> | number
-  aulaId?: Prisma.IntFilter<"ProgressoAula"> | number
+  id?: Prisma.StringFilter<"ProgressoAula"> | string
+  usuarioId?: Prisma.StringFilter<"ProgressoAula"> | string
+  aulaId?: Prisma.StringFilter<"ProgressoAula"> | string
   dataConclusao?: Prisma.DateTimeNullableFilter<"ProgressoAula"> | Date | string | null
   status?: Prisma.StringFilter<"ProgressoAula"> | string
 }
 
 export type ProgressoAulaCreateWithoutAulaInput = {
+  id?: string
   dataConclusao?: Date | string | null
   status: string
   usuario: Prisma.UsuarioCreateNestedOneWithoutProgressoAulasInput
 }
 
 export type ProgressoAulaUncheckedCreateWithoutAulaInput = {
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataConclusao?: Date | string | null
   status: string
 }
@@ -524,49 +495,57 @@ export type ProgressoAulaUpdateManyWithWhereWithoutAulaInput = {
 }
 
 export type ProgressoAulaCreateManyUsuarioInput = {
-  aulaId: number
+  id?: string
+  aulaId: string
   dataConclusao?: Date | string | null
   status: string
 }
 
 export type ProgressoAulaUpdateWithoutUsuarioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
   aula?: Prisma.AulaUpdateOneRequiredWithoutProgressoAulasNestedInput
 }
 
 export type ProgressoAulaUncheckedUpdateWithoutUsuarioInput = {
-  aulaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  aulaId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProgressoAulaUncheckedUpdateManyWithoutUsuarioInput = {
-  aulaId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  aulaId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProgressoAulaCreateManyAulaInput = {
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataConclusao?: Date | string | null
   status: string
 }
 
 export type ProgressoAulaUpdateWithoutAulaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProgressoAulasNestedInput
 }
 
 export type ProgressoAulaUncheckedUpdateWithoutAulaInput = {
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProgressoAulaUncheckedUpdateManyWithoutAulaInput = {
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataConclusao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -574,6 +553,7 @@ export type ProgressoAulaUncheckedUpdateManyWithoutAulaInput = {
 
 
 export type ProgressoAulaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   usuarioId?: boolean
   aulaId?: boolean
   dataConclusao?: boolean
@@ -583,6 +563,7 @@ export type ProgressoAulaSelect<ExtArgs extends runtime.Types.Extensions.Interna
 }, ExtArgs["result"]["progressoAula"]>
 
 export type ProgressoAulaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   usuarioId?: boolean
   aulaId?: boolean
   dataConclusao?: boolean
@@ -592,6 +573,7 @@ export type ProgressoAulaSelectCreateManyAndReturn<ExtArgs extends runtime.Types
 }, ExtArgs["result"]["progressoAula"]>
 
 export type ProgressoAulaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   usuarioId?: boolean
   aulaId?: boolean
   dataConclusao?: boolean
@@ -601,13 +583,14 @@ export type ProgressoAulaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
 }, ExtArgs["result"]["progressoAula"]>
 
 export type ProgressoAulaSelectScalar = {
+  id?: boolean
   usuarioId?: boolean
   aulaId?: boolean
   dataConclusao?: boolean
   status?: boolean
 }
 
-export type ProgressoAulaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"usuarioId" | "aulaId" | "dataConclusao" | "status", ExtArgs["result"]["progressoAula"]>
+export type ProgressoAulaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuarioId" | "aulaId" | "dataConclusao" | "status", ExtArgs["result"]["progressoAula"]>
 export type ProgressoAulaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   aula?: boolean | Prisma.AulaDefaultArgs<ExtArgs>
@@ -628,8 +611,9 @@ export type $ProgressoAulaPayload<ExtArgs extends runtime.Types.Extensions.Inter
     aula: Prisma.$AulaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    usuarioId: number
-    aulaId: number
+    id: string
+    usuarioId: string
+    aulaId: string
     dataConclusao: Date | null
     status: string
   }, ExtArgs["result"]["progressoAula"]>
@@ -715,8 +699,8 @@ export interface ProgressoAulaDelegate<ExtArgs extends runtime.Types.Extensions.
    * // Get first 10 ProgressoAulas
    * const progressoAulas = await prisma.progressoAula.findMany({ take: 10 })
    * 
-   * // Only select the `usuarioId`
-   * const progressoAulaWithUsuarioIdOnly = await prisma.progressoAula.findMany({ select: { usuarioId: true } })
+   * // Only select the `id`
+   * const progressoAulaWithIdOnly = await prisma.progressoAula.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends ProgressoAulaFindManyArgs>(args?: Prisma.SelectSubset<T, ProgressoAulaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgressoAulaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -760,9 +744,9 @@ export interface ProgressoAulaDelegate<ExtArgs extends runtime.Types.Extensions.
    *   ]
    * })
    * 
-   * // Create many ProgressoAulas and only return the `usuarioId`
-   * const progressoAulaWithUsuarioIdOnly = await prisma.progressoAula.createManyAndReturn({
-   *   select: { usuarioId: true },
+   * // Create many ProgressoAulas and only return the `id`
+   * const progressoAulaWithIdOnly = await prisma.progressoAula.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -851,9 +835,9 @@ export interface ProgressoAulaDelegate<ExtArgs extends runtime.Types.Extensions.
    *   ]
    * })
    * 
-   * // Update zero or more ProgressoAulas and only return the `usuarioId`
-   * const progressoAulaWithUsuarioIdOnly = await prisma.progressoAula.updateManyAndReturn({
-   *   select: { usuarioId: true },
+   * // Update zero or more ProgressoAulas and only return the `id`
+   * const progressoAulaWithIdOnly = await prisma.progressoAula.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1057,8 +1041,9 @@ export interface Prisma__ProgressoAulaClient<T, Null = never, ExtArgs extends ru
  * Fields of the ProgressoAula model
  */
 export interface ProgressoAulaFieldRefs {
-  readonly usuarioId: Prisma.FieldRef<"ProgressoAula", 'Int'>
-  readonly aulaId: Prisma.FieldRef<"ProgressoAula", 'Int'>
+  readonly id: Prisma.FieldRef<"ProgressoAula", 'String'>
+  readonly usuarioId: Prisma.FieldRef<"ProgressoAula", 'String'>
+  readonly aulaId: Prisma.FieldRef<"ProgressoAula", 'String'>
   readonly dataConclusao: Prisma.FieldRef<"ProgressoAula", 'DateTime'>
   readonly status: Prisma.FieldRef<"ProgressoAula", 'String'>
 }

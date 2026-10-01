@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Usuario {
-  id           Int      @id @default(autoincrement()) @map("ID_Usuario")
+  id           String   @id @default(uuid()) @map("ID_Usuario")
   nomeCompleto String
   email        String   @unique
   senhaHash    String
@@ -27,7 +27,7 @@ model Usuario {
 }
 
 model Categoria {
-  id        Int     @id @default(autoincrement()) @map("ID_Categoria")
+  id        String  @id @default(uuid()) @map("ID_Categoria")
   nome      String  @unique
   descricao String?
 
@@ -38,11 +38,11 @@ model Categoria {
 }
 
 model Curso {
-  id             Int       @id @default(autoincrement()) @map("ID_Curso")
+  id             String    @id @default(uuid()) @map("ID_Curso")
   titulo         String
   descricao      String
-  instrutorId    Int       @map("ID_Instrutor")
-  categoriaId    Int       @map("ID_Categoria")
+  instrutorId    String    @map("ID_Instrutor")
+  categoriaId    String    @map("ID_Categoria")
   nivel          String
   dataPublicacao DateTime?
   totalAulas     Int       @default(0)
@@ -60,8 +60,8 @@ model Curso {
 }
 
 model Modulo {
-  id      Int    @id @default(autoincrement()) @map("ID_Modulo")
-  cursoId Int    @map("ID_Curso")
+  id      String @id @default(uuid()) @map("ID_Modulo")
+  cursoId String @map("ID_Curso")
   titulo  String
   ordem   Int
 
@@ -72,8 +72,8 @@ model Modulo {
 }
 
 model Aula {
-  id             Int     @id @default(autoincrement()) @map("ID_Aula")
-  moduloId       Int     @map("ID_Modulo")
+  id             String  @id @default(uuid()) @map("ID_Aula")
+  moduloId       String  @map("ID_Modulo")
   titulo         String
   tipoConteudo   String
   urlConteudo    String? @map("URL_Conteudo")
@@ -87,9 +87,9 @@ model Aula {
 }
 
 model Matricula {
-  id            Int       @id @default(autoincrement()) @map("ID_Matricula")
-  usuarioId     Int       @map("ID_Usuario")
-  cursoId       Int       @map("ID_Curso")
+  id            String    @id @default(uuid()) @map("ID_Matricula")
+  usuarioId     String    @map("ID_Usuario")
+  cursoId       String    @map("ID_Curso")
   dataMatricula DateTime  @default(now())
   dataConclusao DateTime?
 
@@ -100,22 +100,22 @@ model Matricula {
 }
 
 model ProgressoAula {
-  usuarioId     Int       @map("ID_Usuario")
-  aulaId        Int       @map("ID_Aula")
+  id            String    @id @default(uuid()) @map("ID_Progresso")
+  usuarioId     String    @map("ID_Usuario")
+  aulaId        String    @map("ID_Aula")
   dataConclusao DateTime?
   status        String
 
   usuario Usuario @relation(fields: [usuarioId], references: [id])
   aula    Aula    @relation(fields: [aulaId], references: [id])
 
-  @@id([usuarioId, aulaId])
   @@map("Progresso_Aulas")
 }
 
 model Avaliacao {
-  id            Int      @id @default(autoincrement()) @map("ID_Avaliacao")
-  usuarioId     Int      @map("ID_Usuario")
-  cursoId       Int      @map("ID_Curso")
+  id            String   @id @default(uuid()) @map("ID_Avaliacao")
+  usuarioId     String   @map("ID_Usuario")
+  cursoId       String   @map("ID_Curso")
   nota          Int
   comentario    String?
   dataAvaliacao DateTime @default(now())
@@ -127,10 +127,10 @@ model Avaliacao {
 }
 
 model Trilha {
-  id          Int     @id @default(autoincrement()) @map("ID_Trilha")
+  id          String  @id @default(uuid()) @map("ID_Trilha")
   titulo      String
   descricao   String?
-  categoriaId Int     @map("ID_Categoria")
+  categoriaId String  @map("ID_Categoria")
 
   categoria    Categoria     @relation(fields: [categoriaId], references: [id])
   trilhaCursos TrilhaCurso[]
@@ -140,22 +140,22 @@ model Trilha {
 }
 
 model TrilhaCurso {
-  trilhaId Int @map("ID_Trilha")
-  cursoId  Int @map("ID_Curso")
+  id       String @id @default(uuid()) @map("ID_TrilhaCurso")
+  trilhaId String @map("ID_Trilha")
+  cursoId  String @map("ID_Curso")
   ordem    Int
 
   trilha Trilha @relation(fields: [trilhaId], references: [id])
   curso  Curso  @relation(fields: [cursoId], references: [id])
 
-  @@id([trilhaId, cursoId])
   @@map("Trilhas_Cursos")
 }
 
 model Certificado {
-  id                Int      @id @default(autoincrement()) @map("ID_Certificado")
-  usuarioId         Int      @map("ID_Usuario")
-  cursoId           Int?     @map("ID_Curso")
-  trilhaId          Int?     @map("ID_Trilha")
+  id                String   @id @default(uuid()) @map("ID_Certificado")
+  usuarioId         String   @map("ID_Usuario")
+  cursoId           String?  @map("ID_Curso")
+  trilhaId          String?  @map("ID_Trilha")
   codigoVerificacao String   @unique
   dataEmissao       DateTime @default(now())
 
@@ -167,7 +167,7 @@ model Certificado {
 }
 
 model Plano {
-  id           Int     @id @default(autoincrement()) @map("ID_Plano")
+  id           String  @id @default(uuid()) @map("ID_Plano")
   nome         String
   descricao    String?
   preco        Float
@@ -179,9 +179,9 @@ model Plano {
 }
 
 model Assinatura {
-  id         Int      @id @default(autoincrement()) @map("ID_Assinatura")
-  usuarioId  Int      @map("ID_Usuario")
-  planoId    Int      @map("ID_Plano")
+  id         String   @id @default(uuid()) @map("ID_Assinatura")
+  usuarioId  String   @map("ID_Usuario")
+  planoId    String   @map("ID_Plano")
   dataInicio DateTime
   dataFim    DateTime
 
@@ -193,8 +193,8 @@ model Assinatura {
 }
 
 model Pagamento {
-  id                 Int      @id @default(autoincrement()) @map("ID_Pagamento")
-  assinaturaId       Int      @map("ID_Assinatura")
+  id                 String   @id @default(uuid()) @map("ID_Pagamento")
+  assinaturaId       String   @map("ID_Assinatura")
   valorPago          Float
   dataPagamento      DateTime @default(now())
   metodoPagamento    String

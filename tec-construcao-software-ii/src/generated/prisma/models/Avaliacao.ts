@@ -27,32 +27,26 @@ export type AggregateAvaliacao = {
 }
 
 export type AvaliacaoAvgAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
   nota: number | null
 }
 
 export type AvaliacaoSumAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
   nota: number | null
 }
 
 export type AvaliacaoMinAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
   nota: number | null
   comentario: string | null
   dataAvaliacao: Date | null
 }
 
 export type AvaliacaoMaxAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  cursoId: number | null
+  id: string | null
+  usuarioId: string | null
+  cursoId: string | null
   nota: number | null
   comentario: string | null
   dataAvaliacao: Date | null
@@ -70,16 +64,10 @@ export type AvaliacaoCountAggregateOutputType = {
 
 
 export type AvaliacaoAvgAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
   nota?: true
 }
 
 export type AvaliacaoSumAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  cursoId?: true
   nota?: true
 }
 
@@ -198,9 +186,9 @@ export type AvaliacaoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 export type AvaliacaoGroupByOutputType = {
-  id: number
-  usuarioId: number
-  cursoId: number
+  id: string
+  usuarioId: string
+  cursoId: string
   nota: number
   comentario: string | null
   dataAvaliacao: Date
@@ -230,9 +218,9 @@ export type AvaliacaoWhereInput = {
   AND?: Prisma.AvaliacaoWhereInput | Prisma.AvaliacaoWhereInput[]
   OR?: Prisma.AvaliacaoWhereInput[]
   NOT?: Prisma.AvaliacaoWhereInput | Prisma.AvaliacaoWhereInput[]
-  id?: Prisma.IntFilter<"Avaliacao"> | number
-  usuarioId?: Prisma.IntFilter<"Avaliacao"> | number
-  cursoId?: Prisma.IntFilter<"Avaliacao"> | number
+  id?: Prisma.StringFilter<"Avaliacao"> | string
+  usuarioId?: Prisma.StringFilter<"Avaliacao"> | string
+  cursoId?: Prisma.StringFilter<"Avaliacao"> | string
   nota?: Prisma.IntFilter<"Avaliacao"> | number
   comentario?: Prisma.StringNullableFilter<"Avaliacao"> | string | null
   dataAvaliacao?: Prisma.DateTimeFilter<"Avaliacao"> | Date | string
@@ -252,12 +240,12 @@ export type AvaliacaoOrderByWithRelationInput = {
 }
 
 export type AvaliacaoWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.AvaliacaoWhereInput | Prisma.AvaliacaoWhereInput[]
   OR?: Prisma.AvaliacaoWhereInput[]
   NOT?: Prisma.AvaliacaoWhereInput | Prisma.AvaliacaoWhereInput[]
-  usuarioId?: Prisma.IntFilter<"Avaliacao"> | number
-  cursoId?: Prisma.IntFilter<"Avaliacao"> | number
+  usuarioId?: Prisma.StringFilter<"Avaliacao"> | string
+  cursoId?: Prisma.StringFilter<"Avaliacao"> | string
   nota?: Prisma.IntFilter<"Avaliacao"> | number
   comentario?: Prisma.StringNullableFilter<"Avaliacao"> | string | null
   dataAvaliacao?: Prisma.DateTimeFilter<"Avaliacao"> | Date | string
@@ -283,15 +271,16 @@ export type AvaliacaoScalarWhereWithAggregatesInput = {
   AND?: Prisma.AvaliacaoScalarWhereWithAggregatesInput | Prisma.AvaliacaoScalarWhereWithAggregatesInput[]
   OR?: Prisma.AvaliacaoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AvaliacaoScalarWhereWithAggregatesInput | Prisma.AvaliacaoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Avaliacao"> | number
-  usuarioId?: Prisma.IntWithAggregatesFilter<"Avaliacao"> | number
-  cursoId?: Prisma.IntWithAggregatesFilter<"Avaliacao"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Avaliacao"> | string
+  usuarioId?: Prisma.StringWithAggregatesFilter<"Avaliacao"> | string
+  cursoId?: Prisma.StringWithAggregatesFilter<"Avaliacao"> | string
   nota?: Prisma.IntWithAggregatesFilter<"Avaliacao"> | number
   comentario?: Prisma.StringNullableWithAggregatesFilter<"Avaliacao"> | string | null
   dataAvaliacao?: Prisma.DateTimeWithAggregatesFilter<"Avaliacao"> | Date | string
 }
 
 export type AvaliacaoCreateInput = {
+  id?: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
@@ -300,15 +289,16 @@ export type AvaliacaoCreateInput = {
 }
 
 export type AvaliacaoUncheckedCreateInput = {
-  id?: number
-  usuarioId: number
-  cursoId: number
+  id?: string
+  usuarioId: string
+  cursoId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
 }
 
 export type AvaliacaoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -317,33 +307,34 @@ export type AvaliacaoUpdateInput = {
 }
 
 export type AvaliacaoUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvaliacaoCreateManyInput = {
-  id?: number
-  usuarioId: number
-  cursoId: number
+  id?: string
+  usuarioId: string
+  cursoId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
 }
 
 export type AvaliacaoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvaliacaoUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -369,9 +360,6 @@ export type AvaliacaoCountOrderByAggregateInput = {
 }
 
 export type AvaliacaoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
   nota?: Prisma.SortOrder
 }
 
@@ -394,9 +382,6 @@ export type AvaliacaoMinOrderByAggregateInput = {
 }
 
 export type AvaliacaoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  cursoId?: Prisma.SortOrder
   nota?: Prisma.SortOrder
 }
 
@@ -485,6 +470,7 @@ export type AvaliacaoUncheckedUpdateManyWithoutCursoNestedInput = {
 }
 
 export type AvaliacaoCreateWithoutUsuarioInput = {
+  id?: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
@@ -492,8 +478,8 @@ export type AvaliacaoCreateWithoutUsuarioInput = {
 }
 
 export type AvaliacaoUncheckedCreateWithoutUsuarioInput = {
-  id?: number
-  cursoId: number
+  id?: string
+  cursoId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
@@ -529,15 +515,16 @@ export type AvaliacaoScalarWhereInput = {
   AND?: Prisma.AvaliacaoScalarWhereInput | Prisma.AvaliacaoScalarWhereInput[]
   OR?: Prisma.AvaliacaoScalarWhereInput[]
   NOT?: Prisma.AvaliacaoScalarWhereInput | Prisma.AvaliacaoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Avaliacao"> | number
-  usuarioId?: Prisma.IntFilter<"Avaliacao"> | number
-  cursoId?: Prisma.IntFilter<"Avaliacao"> | number
+  id?: Prisma.StringFilter<"Avaliacao"> | string
+  usuarioId?: Prisma.StringFilter<"Avaliacao"> | string
+  cursoId?: Prisma.StringFilter<"Avaliacao"> | string
   nota?: Prisma.IntFilter<"Avaliacao"> | number
   comentario?: Prisma.StringNullableFilter<"Avaliacao"> | string | null
   dataAvaliacao?: Prisma.DateTimeFilter<"Avaliacao"> | Date | string
 }
 
 export type AvaliacaoCreateWithoutCursoInput = {
+  id?: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
@@ -545,8 +532,8 @@ export type AvaliacaoCreateWithoutCursoInput = {
 }
 
 export type AvaliacaoUncheckedCreateWithoutCursoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
@@ -579,14 +566,15 @@ export type AvaliacaoUpdateManyWithWhereWithoutCursoInput = {
 }
 
 export type AvaliacaoCreateManyUsuarioInput = {
-  id?: number
-  cursoId: number
+  id?: string
+  cursoId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
 }
 
 export type AvaliacaoUpdateWithoutUsuarioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -594,30 +582,31 @@ export type AvaliacaoUpdateWithoutUsuarioInput = {
 }
 
 export type AvaliacaoUncheckedUpdateWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvaliacaoUncheckedUpdateManyWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cursoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cursoId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvaliacaoCreateManyCursoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   nota: number
   comentario?: string | null
   dataAvaliacao?: Date | string
 }
 
 export type AvaliacaoUpdateWithoutCursoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -625,16 +614,16 @@ export type AvaliacaoUpdateWithoutCursoInput = {
 }
 
 export type AvaliacaoUncheckedUpdateWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvaliacaoUncheckedUpdateManyWithoutCursoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   nota?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataAvaliacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -705,9 +694,9 @@ export type $AvaliacaoPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     curso: Prisma.$CursoPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    usuarioId: number
-    cursoId: number
+    id: string
+    usuarioId: string
+    cursoId: string
     nota: number
     comentario: string | null
     dataAvaliacao: Date
@@ -1136,9 +1125,9 @@ export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends runtim
  * Fields of the Avaliacao model
  */
 export interface AvaliacaoFieldRefs {
-  readonly id: Prisma.FieldRef<"Avaliacao", 'Int'>
-  readonly usuarioId: Prisma.FieldRef<"Avaliacao", 'Int'>
-  readonly cursoId: Prisma.FieldRef<"Avaliacao", 'Int'>
+  readonly id: Prisma.FieldRef<"Avaliacao", 'String'>
+  readonly usuarioId: Prisma.FieldRef<"Avaliacao", 'String'>
+  readonly cursoId: Prisma.FieldRef<"Avaliacao", 'String'>
   readonly nota: Prisma.FieldRef<"Avaliacao", 'Int'>
   readonly comentario: Prisma.FieldRef<"Avaliacao", 'String'>
   readonly dataAvaliacao: Prisma.FieldRef<"Avaliacao", 'DateTime'>

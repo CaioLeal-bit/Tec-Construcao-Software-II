@@ -20,34 +20,22 @@ export type TrilhaModel = runtime.Types.Result.DefaultSelection<Prisma.$TrilhaPa
 
 export type AggregateTrilha = {
   _count: TrilhaCountAggregateOutputType | null
-  _avg: TrilhaAvgAggregateOutputType | null
-  _sum: TrilhaSumAggregateOutputType | null
   _min: TrilhaMinAggregateOutputType | null
   _max: TrilhaMaxAggregateOutputType | null
 }
 
-export type TrilhaAvgAggregateOutputType = {
-  id: number | null
-  categoriaId: number | null
-}
-
-export type TrilhaSumAggregateOutputType = {
-  id: number | null
-  categoriaId: number | null
-}
-
 export type TrilhaMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   titulo: string | null
   descricao: string | null
-  categoriaId: number | null
+  categoriaId: string | null
 }
 
 export type TrilhaMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   titulo: string | null
   descricao: string | null
-  categoriaId: number | null
+  categoriaId: string | null
 }
 
 export type TrilhaCountAggregateOutputType = {
@@ -58,16 +46,6 @@ export type TrilhaCountAggregateOutputType = {
   _all: number
 }
 
-
-export type TrilhaAvgAggregateInputType = {
-  id?: true
-  categoriaId?: true
-}
-
-export type TrilhaSumAggregateInputType = {
-  id?: true
-  categoriaId?: true
-}
 
 export type TrilhaMinAggregateInputType = {
   id?: true
@@ -129,18 +107,6 @@ export type TrilhaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Interna
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: TrilhaAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: TrilhaSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: TrilhaMinAggregateInputType
@@ -171,20 +137,16 @@ export type TrilhaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   _count?: TrilhaCountAggregateInputType | true
-  _avg?: TrilhaAvgAggregateInputType
-  _sum?: TrilhaSumAggregateInputType
   _min?: TrilhaMinAggregateInputType
   _max?: TrilhaMaxAggregateInputType
 }
 
 export type TrilhaGroupByOutputType = {
-  id: number
+  id: string
   titulo: string
   descricao: string | null
-  categoriaId: number
+  categoriaId: string
   _count: TrilhaCountAggregateOutputType | null
-  _avg: TrilhaAvgAggregateOutputType | null
-  _sum: TrilhaSumAggregateOutputType | null
   _min: TrilhaMinAggregateOutputType | null
   _max: TrilhaMaxAggregateOutputType | null
 }
@@ -208,10 +170,10 @@ export type TrilhaWhereInput = {
   AND?: Prisma.TrilhaWhereInput | Prisma.TrilhaWhereInput[]
   OR?: Prisma.TrilhaWhereInput[]
   NOT?: Prisma.TrilhaWhereInput | Prisma.TrilhaWhereInput[]
-  id?: Prisma.IntFilter<"Trilha"> | number
+  id?: Prisma.StringFilter<"Trilha"> | string
   titulo?: Prisma.StringFilter<"Trilha"> | string
   descricao?: Prisma.StringNullableFilter<"Trilha"> | string | null
-  categoriaId?: Prisma.IntFilter<"Trilha"> | number
+  categoriaId?: Prisma.StringFilter<"Trilha"> | string
   categoria?: Prisma.XOR<Prisma.CategoriaScalarRelationFilter, Prisma.CategoriaWhereInput>
   trilhaCursos?: Prisma.TrilhaCursoListRelationFilter
   certificados?: Prisma.CertificadoListRelationFilter
@@ -228,13 +190,13 @@ export type TrilhaOrderByWithRelationInput = {
 }
 
 export type TrilhaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.TrilhaWhereInput | Prisma.TrilhaWhereInput[]
   OR?: Prisma.TrilhaWhereInput[]
   NOT?: Prisma.TrilhaWhereInput | Prisma.TrilhaWhereInput[]
   titulo?: Prisma.StringFilter<"Trilha"> | string
   descricao?: Prisma.StringNullableFilter<"Trilha"> | string | null
-  categoriaId?: Prisma.IntFilter<"Trilha"> | number
+  categoriaId?: Prisma.StringFilter<"Trilha"> | string
   categoria?: Prisma.XOR<Prisma.CategoriaScalarRelationFilter, Prisma.CategoriaWhereInput>
   trilhaCursos?: Prisma.TrilhaCursoListRelationFilter
   certificados?: Prisma.CertificadoListRelationFilter
@@ -246,23 +208,22 @@ export type TrilhaOrderByWithAggregationInput = {
   descricao?: Prisma.SortOrderInput | Prisma.SortOrder
   categoriaId?: Prisma.SortOrder
   _count?: Prisma.TrilhaCountOrderByAggregateInput
-  _avg?: Prisma.TrilhaAvgOrderByAggregateInput
   _max?: Prisma.TrilhaMaxOrderByAggregateInput
   _min?: Prisma.TrilhaMinOrderByAggregateInput
-  _sum?: Prisma.TrilhaSumOrderByAggregateInput
 }
 
 export type TrilhaScalarWhereWithAggregatesInput = {
   AND?: Prisma.TrilhaScalarWhereWithAggregatesInput | Prisma.TrilhaScalarWhereWithAggregatesInput[]
   OR?: Prisma.TrilhaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TrilhaScalarWhereWithAggregatesInput | Prisma.TrilhaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Trilha"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Trilha"> | string
   titulo?: Prisma.StringWithAggregatesFilter<"Trilha"> | string
   descricao?: Prisma.StringNullableWithAggregatesFilter<"Trilha"> | string | null
-  categoriaId?: Prisma.IntWithAggregatesFilter<"Trilha"> | number
+  categoriaId?: Prisma.StringWithAggregatesFilter<"Trilha"> | string
 }
 
 export type TrilhaCreateInput = {
+  id?: string
   titulo: string
   descricao?: string | null
   categoria: Prisma.CategoriaCreateNestedOneWithoutTrilhasInput
@@ -271,15 +232,16 @@ export type TrilhaCreateInput = {
 }
 
 export type TrilhaUncheckedCreateInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
-  categoriaId: number
+  categoriaId: string
   trilhaCursos?: Prisma.TrilhaCursoUncheckedCreateNestedManyWithoutTrilhaInput
   certificados?: Prisma.CertificadoUncheckedCreateNestedManyWithoutTrilhaInput
 }
 
 export type TrilhaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoria?: Prisma.CategoriaUpdateOneRequiredWithoutTrilhasNestedInput
@@ -288,31 +250,32 @@ export type TrilhaUpdateInput = {
 }
 
 export type TrilhaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   trilhaCursos?: Prisma.TrilhaCursoUncheckedUpdateManyWithoutTrilhaNestedInput
   certificados?: Prisma.CertificadoUncheckedUpdateManyWithoutTrilhaNestedInput
 }
 
 export type TrilhaCreateManyInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
-  categoriaId: number
+  categoriaId: string
 }
 
 export type TrilhaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TrilhaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type TrilhaListRelationFilter = {
@@ -332,11 +295,6 @@ export type TrilhaCountOrderByAggregateInput = {
   categoriaId?: Prisma.SortOrder
 }
 
-export type TrilhaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  categoriaId?: Prisma.SortOrder
-}
-
 export type TrilhaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
@@ -348,11 +306,6 @@ export type TrilhaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   descricao?: Prisma.SortOrder
-  categoriaId?: Prisma.SortOrder
-}
-
-export type TrilhaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   categoriaId?: Prisma.SortOrder
 }
 
@@ -439,6 +392,7 @@ export type TrilhaUpdateOneWithoutCertificadosNestedInput = {
 }
 
 export type TrilhaCreateWithoutCategoriaInput = {
+  id?: string
   titulo: string
   descricao?: string | null
   trilhaCursos?: Prisma.TrilhaCursoCreateNestedManyWithoutTrilhaInput
@@ -446,7 +400,7 @@ export type TrilhaCreateWithoutCategoriaInput = {
 }
 
 export type TrilhaUncheckedCreateWithoutCategoriaInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
   trilhaCursos?: Prisma.TrilhaCursoUncheckedCreateNestedManyWithoutTrilhaInput
@@ -483,13 +437,14 @@ export type TrilhaScalarWhereInput = {
   AND?: Prisma.TrilhaScalarWhereInput | Prisma.TrilhaScalarWhereInput[]
   OR?: Prisma.TrilhaScalarWhereInput[]
   NOT?: Prisma.TrilhaScalarWhereInput | Prisma.TrilhaScalarWhereInput[]
-  id?: Prisma.IntFilter<"Trilha"> | number
+  id?: Prisma.StringFilter<"Trilha"> | string
   titulo?: Prisma.StringFilter<"Trilha"> | string
   descricao?: Prisma.StringNullableFilter<"Trilha"> | string | null
-  categoriaId?: Prisma.IntFilter<"Trilha"> | number
+  categoriaId?: Prisma.StringFilter<"Trilha"> | string
 }
 
 export type TrilhaCreateWithoutTrilhaCursosInput = {
+  id?: string
   titulo: string
   descricao?: string | null
   categoria: Prisma.CategoriaCreateNestedOneWithoutTrilhasInput
@@ -497,10 +452,10 @@ export type TrilhaCreateWithoutTrilhaCursosInput = {
 }
 
 export type TrilhaUncheckedCreateWithoutTrilhaCursosInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
-  categoriaId: number
+  categoriaId: string
   certificados?: Prisma.CertificadoUncheckedCreateNestedManyWithoutTrilhaInput
 }
 
@@ -521,6 +476,7 @@ export type TrilhaUpdateToOneWithWhereWithoutTrilhaCursosInput = {
 }
 
 export type TrilhaUpdateWithoutTrilhaCursosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoria?: Prisma.CategoriaUpdateOneRequiredWithoutTrilhasNestedInput
@@ -528,14 +484,15 @@ export type TrilhaUpdateWithoutTrilhaCursosInput = {
 }
 
 export type TrilhaUncheckedUpdateWithoutTrilhaCursosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   certificados?: Prisma.CertificadoUncheckedUpdateManyWithoutTrilhaNestedInput
 }
 
 export type TrilhaCreateWithoutCertificadosInput = {
+  id?: string
   titulo: string
   descricao?: string | null
   categoria: Prisma.CategoriaCreateNestedOneWithoutTrilhasInput
@@ -543,10 +500,10 @@ export type TrilhaCreateWithoutCertificadosInput = {
 }
 
 export type TrilhaUncheckedCreateWithoutCertificadosInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
-  categoriaId: number
+  categoriaId: string
   trilhaCursos?: Prisma.TrilhaCursoUncheckedCreateNestedManyWithoutTrilhaInput
 }
 
@@ -567,6 +524,7 @@ export type TrilhaUpdateToOneWithWhereWithoutCertificadosInput = {
 }
 
 export type TrilhaUpdateWithoutCertificadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoria?: Prisma.CategoriaUpdateOneRequiredWithoutTrilhasNestedInput
@@ -574,20 +532,21 @@ export type TrilhaUpdateWithoutCertificadosInput = {
 }
 
 export type TrilhaUncheckedUpdateWithoutCertificadosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   trilhaCursos?: Prisma.TrilhaCursoUncheckedUpdateManyWithoutTrilhaNestedInput
 }
 
 export type TrilhaCreateManyCategoriaInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao?: string | null
 }
 
 export type TrilhaUpdateWithoutCategoriaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trilhaCursos?: Prisma.TrilhaCursoUpdateManyWithoutTrilhaNestedInput
@@ -595,7 +554,7 @@ export type TrilhaUpdateWithoutCategoriaInput = {
 }
 
 export type TrilhaUncheckedUpdateWithoutCategoriaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trilhaCursos?: Prisma.TrilhaCursoUncheckedUpdateManyWithoutTrilhaNestedInput
@@ -603,7 +562,7 @@ export type TrilhaUncheckedUpdateWithoutCategoriaInput = {
 }
 
 export type TrilhaUncheckedUpdateManyWithoutCategoriaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -704,10 +663,10 @@ export type $TrilhaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     certificados: Prisma.$CertificadoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     titulo: string
     descricao: string | null
-    categoriaId: number
+    categoriaId: string
   }, ExtArgs["result"]["trilha"]>
   composites: {}
 }
@@ -1134,10 +1093,10 @@ export interface Prisma__TrilhaClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the Trilha model
  */
 export interface TrilhaFieldRefs {
-  readonly id: Prisma.FieldRef<"Trilha", 'Int'>
+  readonly id: Prisma.FieldRef<"Trilha", 'String'>
   readonly titulo: Prisma.FieldRef<"Trilha", 'String'>
   readonly descricao: Prisma.FieldRef<"Trilha", 'String'>
-  readonly categoriaId: Prisma.FieldRef<"Trilha", 'Int'>
+  readonly categoriaId: Prisma.FieldRef<"Trilha", 'String'>
 }
     
 

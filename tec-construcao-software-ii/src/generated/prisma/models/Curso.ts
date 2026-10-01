@@ -27,27 +27,21 @@ export type AggregateCurso = {
 }
 
 export type CursoAvgAggregateOutputType = {
-  id: number | null
-  instrutorId: number | null
-  categoriaId: number | null
   totalAulas: number | null
   totalHoras: number | null
 }
 
 export type CursoSumAggregateOutputType = {
-  id: number | null
-  instrutorId: number | null
-  categoriaId: number | null
   totalAulas: number | null
   totalHoras: number | null
 }
 
 export type CursoMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   titulo: string | null
   descricao: string | null
-  instrutorId: number | null
-  categoriaId: number | null
+  instrutorId: string | null
+  categoriaId: string | null
   nivel: string | null
   dataPublicacao: Date | null
   totalAulas: number | null
@@ -55,11 +49,11 @@ export type CursoMinAggregateOutputType = {
 }
 
 export type CursoMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   titulo: string | null
   descricao: string | null
-  instrutorId: number | null
-  categoriaId: number | null
+  instrutorId: string | null
+  categoriaId: string | null
   nivel: string | null
   dataPublicacao: Date | null
   totalAulas: number | null
@@ -81,17 +75,11 @@ export type CursoCountAggregateOutputType = {
 
 
 export type CursoAvgAggregateInputType = {
-  id?: true
-  instrutorId?: true
-  categoriaId?: true
   totalAulas?: true
   totalHoras?: true
 }
 
 export type CursoSumAggregateInputType = {
-  id?: true
-  instrutorId?: true
-  categoriaId?: true
   totalAulas?: true
   totalHoras?: true
 }
@@ -220,11 +208,11 @@ export type CursoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 export type CursoGroupByOutputType = {
-  id: number
+  id: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao: Date | null
   totalAulas: number
@@ -255,11 +243,11 @@ export type CursoWhereInput = {
   AND?: Prisma.CursoWhereInput | Prisma.CursoWhereInput[]
   OR?: Prisma.CursoWhereInput[]
   NOT?: Prisma.CursoWhereInput | Prisma.CursoWhereInput[]
-  id?: Prisma.IntFilter<"Curso"> | number
+  id?: Prisma.StringFilter<"Curso"> | string
   titulo?: Prisma.StringFilter<"Curso"> | string
   descricao?: Prisma.StringFilter<"Curso"> | string
-  instrutorId?: Prisma.IntFilter<"Curso"> | number
-  categoriaId?: Prisma.IntFilter<"Curso"> | number
+  instrutorId?: Prisma.StringFilter<"Curso"> | string
+  categoriaId?: Prisma.StringFilter<"Curso"> | string
   nivel?: Prisma.StringFilter<"Curso"> | string
   dataPublicacao?: Prisma.DateTimeNullableFilter<"Curso"> | Date | string | null
   totalAulas?: Prisma.IntFilter<"Curso"> | number
@@ -293,14 +281,14 @@ export type CursoOrderByWithRelationInput = {
 }
 
 export type CursoWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.CursoWhereInput | Prisma.CursoWhereInput[]
   OR?: Prisma.CursoWhereInput[]
   NOT?: Prisma.CursoWhereInput | Prisma.CursoWhereInput[]
   titulo?: Prisma.StringFilter<"Curso"> | string
   descricao?: Prisma.StringFilter<"Curso"> | string
-  instrutorId?: Prisma.IntFilter<"Curso"> | number
-  categoriaId?: Prisma.IntFilter<"Curso"> | number
+  instrutorId?: Prisma.StringFilter<"Curso"> | string
+  categoriaId?: Prisma.StringFilter<"Curso"> | string
   nivel?: Prisma.StringFilter<"Curso"> | string
   dataPublicacao?: Prisma.DateTimeNullableFilter<"Curso"> | Date | string | null
   totalAulas?: Prisma.IntFilter<"Curso"> | number
@@ -335,11 +323,11 @@ export type CursoScalarWhereWithAggregatesInput = {
   AND?: Prisma.CursoScalarWhereWithAggregatesInput | Prisma.CursoScalarWhereWithAggregatesInput[]
   OR?: Prisma.CursoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CursoScalarWhereWithAggregatesInput | Prisma.CursoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Curso"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Curso"> | string
   titulo?: Prisma.StringWithAggregatesFilter<"Curso"> | string
   descricao?: Prisma.StringWithAggregatesFilter<"Curso"> | string
-  instrutorId?: Prisma.IntWithAggregatesFilter<"Curso"> | number
-  categoriaId?: Prisma.IntWithAggregatesFilter<"Curso"> | number
+  instrutorId?: Prisma.StringWithAggregatesFilter<"Curso"> | string
+  categoriaId?: Prisma.StringWithAggregatesFilter<"Curso"> | string
   nivel?: Prisma.StringWithAggregatesFilter<"Curso"> | string
   dataPublicacao?: Prisma.DateTimeNullableWithAggregatesFilter<"Curso"> | Date | string | null
   totalAulas?: Prisma.IntWithAggregatesFilter<"Curso"> | number
@@ -347,6 +335,7 @@ export type CursoScalarWhereWithAggregatesInput = {
 }
 
 export type CursoCreateInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -363,11 +352,11 @@ export type CursoCreateInput = {
 }
 
 export type CursoUncheckedCreateInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -380,6 +369,7 @@ export type CursoUncheckedCreateInput = {
 }
 
 export type CursoUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -396,11 +386,11 @@ export type CursoUpdateInput = {
 }
 
 export type CursoUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -413,11 +403,11 @@ export type CursoUncheckedUpdateInput = {
 }
 
 export type CursoCreateManyInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -425,6 +415,7 @@ export type CursoCreateManyInput = {
 }
 
 export type CursoUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -434,11 +425,11 @@ export type CursoUpdateManyMutationInput = {
 }
 
 export type CursoUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -468,9 +459,6 @@ export type CursoCountOrderByAggregateInput = {
 }
 
 export type CursoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  instrutorId?: Prisma.SortOrder
-  categoriaId?: Prisma.SortOrder
   totalAulas?: Prisma.SortOrder
   totalHoras?: Prisma.SortOrder
 }
@@ -500,9 +488,6 @@ export type CursoMinOrderByAggregateInput = {
 }
 
 export type CursoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  instrutorId?: Prisma.SortOrder
-  categoriaId?: Prisma.SortOrder
   totalAulas?: Prisma.SortOrder
   totalHoras?: Prisma.SortOrder
 }
@@ -605,6 +590,14 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -686,6 +679,7 @@ export type CursoUpdateOneWithoutCertificadosNestedInput = {
 }
 
 export type CursoCreateWithoutInstrutorInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -701,10 +695,10 @@ export type CursoCreateWithoutInstrutorInput = {
 }
 
 export type CursoUncheckedCreateWithoutInstrutorInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  categoriaId: number
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -746,11 +740,11 @@ export type CursoScalarWhereInput = {
   AND?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
   OR?: Prisma.CursoScalarWhereInput[]
   NOT?: Prisma.CursoScalarWhereInput | Prisma.CursoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Curso"> | number
+  id?: Prisma.StringFilter<"Curso"> | string
   titulo?: Prisma.StringFilter<"Curso"> | string
   descricao?: Prisma.StringFilter<"Curso"> | string
-  instrutorId?: Prisma.IntFilter<"Curso"> | number
-  categoriaId?: Prisma.IntFilter<"Curso"> | number
+  instrutorId?: Prisma.StringFilter<"Curso"> | string
+  categoriaId?: Prisma.StringFilter<"Curso"> | string
   nivel?: Prisma.StringFilter<"Curso"> | string
   dataPublicacao?: Prisma.DateTimeNullableFilter<"Curso"> | Date | string | null
   totalAulas?: Prisma.IntFilter<"Curso"> | number
@@ -758,6 +752,7 @@ export type CursoScalarWhereInput = {
 }
 
 export type CursoCreateWithoutCategoriaInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -773,10 +768,10 @@ export type CursoCreateWithoutCategoriaInput = {
 }
 
 export type CursoUncheckedCreateWithoutCategoriaInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
+  instrutorId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -815,6 +810,7 @@ export type CursoUpdateManyWithWhereWithoutCategoriaInput = {
 }
 
 export type CursoCreateWithoutModulosInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -830,11 +826,11 @@ export type CursoCreateWithoutModulosInput = {
 }
 
 export type CursoUncheckedCreateWithoutModulosInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -862,6 +858,7 @@ export type CursoUpdateToOneWithWhereWithoutModulosInput = {
 }
 
 export type CursoUpdateWithoutModulosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -877,11 +874,11 @@ export type CursoUpdateWithoutModulosInput = {
 }
 
 export type CursoUncheckedUpdateWithoutModulosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -893,6 +890,7 @@ export type CursoUncheckedUpdateWithoutModulosInput = {
 }
 
 export type CursoCreateWithoutMatriculasInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -908,11 +906,11 @@ export type CursoCreateWithoutMatriculasInput = {
 }
 
 export type CursoUncheckedCreateWithoutMatriculasInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -940,6 +938,7 @@ export type CursoUpdateToOneWithWhereWithoutMatriculasInput = {
 }
 
 export type CursoUpdateWithoutMatriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -955,11 +954,11 @@ export type CursoUpdateWithoutMatriculasInput = {
 }
 
 export type CursoUncheckedUpdateWithoutMatriculasInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -971,6 +970,7 @@ export type CursoUncheckedUpdateWithoutMatriculasInput = {
 }
 
 export type CursoCreateWithoutAvaliacoesInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -986,11 +986,11 @@ export type CursoCreateWithoutAvaliacoesInput = {
 }
 
 export type CursoUncheckedCreateWithoutAvaliacoesInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -1018,6 +1018,7 @@ export type CursoUpdateToOneWithWhereWithoutAvaliacoesInput = {
 }
 
 export type CursoUpdateWithoutAvaliacoesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1033,11 +1034,11 @@ export type CursoUpdateWithoutAvaliacoesInput = {
 }
 
 export type CursoUncheckedUpdateWithoutAvaliacoesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1049,6 +1050,7 @@ export type CursoUncheckedUpdateWithoutAvaliacoesInput = {
 }
 
 export type CursoCreateWithoutTrilhasCursosInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -1064,11 +1066,11 @@ export type CursoCreateWithoutTrilhasCursosInput = {
 }
 
 export type CursoUncheckedCreateWithoutTrilhasCursosInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -1096,6 +1098,7 @@ export type CursoUpdateToOneWithWhereWithoutTrilhasCursosInput = {
 }
 
 export type CursoUpdateWithoutTrilhasCursosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1111,11 +1114,11 @@ export type CursoUpdateWithoutTrilhasCursosInput = {
 }
 
 export type CursoUncheckedUpdateWithoutTrilhasCursosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1127,6 +1130,7 @@ export type CursoUncheckedUpdateWithoutTrilhasCursosInput = {
 }
 
 export type CursoCreateWithoutCertificadosInput = {
+  id?: string
   titulo: string
   descricao: string
   nivel: string
@@ -1142,11 +1146,11 @@ export type CursoCreateWithoutCertificadosInput = {
 }
 
 export type CursoUncheckedCreateWithoutCertificadosInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
-  categoriaId: number
+  instrutorId: string
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -1174,6 +1178,7 @@ export type CursoUpdateToOneWithWhereWithoutCertificadosInput = {
 }
 
 export type CursoUpdateWithoutCertificadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1189,11 +1194,11 @@ export type CursoUpdateWithoutCertificadosInput = {
 }
 
 export type CursoUncheckedUpdateWithoutCertificadosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1205,10 +1210,10 @@ export type CursoUncheckedUpdateWithoutCertificadosInput = {
 }
 
 export type CursoCreateManyInstrutorInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  categoriaId: number
+  categoriaId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -1216,6 +1221,7 @@ export type CursoCreateManyInstrutorInput = {
 }
 
 export type CursoUpdateWithoutInstrutorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1231,10 +1237,10 @@ export type CursoUpdateWithoutInstrutorInput = {
 }
 
 export type CursoUncheckedUpdateWithoutInstrutorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1247,10 +1253,10 @@ export type CursoUncheckedUpdateWithoutInstrutorInput = {
 }
 
 export type CursoUncheckedUpdateManyWithoutInstrutorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  categoriaId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoriaId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1258,10 +1264,10 @@ export type CursoUncheckedUpdateManyWithoutInstrutorInput = {
 }
 
 export type CursoCreateManyCategoriaInput = {
-  id?: number
+  id?: string
   titulo: string
   descricao: string
-  instrutorId: number
+  instrutorId: string
   nivel: string
   dataPublicacao?: Date | string | null
   totalAulas?: number
@@ -1269,6 +1275,7 @@ export type CursoCreateManyCategoriaInput = {
 }
 
 export type CursoUpdateWithoutCategoriaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1284,10 +1291,10 @@ export type CursoUpdateWithoutCategoriaInput = {
 }
 
 export type CursoUncheckedUpdateWithoutCategoriaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1300,10 +1307,10 @@ export type CursoUncheckedUpdateWithoutCategoriaInput = {
 }
 
 export type CursoUncheckedUpdateManyWithoutCategoriaInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
-  instrutorId?: Prisma.IntFieldUpdateOperationsInput | number
+  instrutorId?: Prisma.StringFieldUpdateOperationsInput | string
   nivel?: Prisma.StringFieldUpdateOperationsInput | string
   dataPublicacao?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   totalAulas?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1469,11 +1476,11 @@ export type $CursoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     certificados: Prisma.$CertificadoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     titulo: string
     descricao: string
-    instrutorId: number
-    categoriaId: number
+    instrutorId: string
+    categoriaId: string
     nivel: string
     dataPublicacao: Date | null
     totalAulas: number
@@ -1908,11 +1915,11 @@ export interface Prisma__CursoClient<T, Null = never, ExtArgs extends runtime.Ty
  * Fields of the Curso model
  */
 export interface CursoFieldRefs {
-  readonly id: Prisma.FieldRef<"Curso", 'Int'>
+  readonly id: Prisma.FieldRef<"Curso", 'String'>
   readonly titulo: Prisma.FieldRef<"Curso", 'String'>
   readonly descricao: Prisma.FieldRef<"Curso", 'String'>
-  readonly instrutorId: Prisma.FieldRef<"Curso", 'Int'>
-  readonly categoriaId: Prisma.FieldRef<"Curso", 'Int'>
+  readonly instrutorId: Prisma.FieldRef<"Curso", 'String'>
+  readonly categoriaId: Prisma.FieldRef<"Curso", 'String'>
   readonly nivel: Prisma.FieldRef<"Curso", 'String'>
   readonly dataPublicacao: Prisma.FieldRef<"Curso", 'DateTime'>
   readonly totalAulas: Prisma.FieldRef<"Curso", 'Int'>

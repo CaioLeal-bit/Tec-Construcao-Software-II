@@ -20,36 +20,22 @@ export type AssinaturaModel = runtime.Types.Result.DefaultSelection<Prisma.$Assi
 
 export type AggregateAssinatura = {
   _count: AssinaturaCountAggregateOutputType | null
-  _avg: AssinaturaAvgAggregateOutputType | null
-  _sum: AssinaturaSumAggregateOutputType | null
   _min: AssinaturaMinAggregateOutputType | null
   _max: AssinaturaMaxAggregateOutputType | null
 }
 
-export type AssinaturaAvgAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  planoId: number | null
-}
-
-export type AssinaturaSumAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  planoId: number | null
-}
-
 export type AssinaturaMinAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  planoId: number | null
+  id: string | null
+  usuarioId: string | null
+  planoId: string | null
   dataInicio: Date | null
   dataFim: Date | null
 }
 
 export type AssinaturaMaxAggregateOutputType = {
-  id: number | null
-  usuarioId: number | null
-  planoId: number | null
+  id: string | null
+  usuarioId: string | null
+  planoId: string | null
   dataInicio: Date | null
   dataFim: Date | null
 }
@@ -63,18 +49,6 @@ export type AssinaturaCountAggregateOutputType = {
   _all: number
 }
 
-
-export type AssinaturaAvgAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  planoId?: true
-}
-
-export type AssinaturaSumAggregateInputType = {
-  id?: true
-  usuarioId?: true
-  planoId?: true
-}
 
 export type AssinaturaMinAggregateInputType = {
   id?: true
@@ -139,18 +113,6 @@ export type AssinaturaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: AssinaturaAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: AssinaturaSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: AssinaturaMinAggregateInputType
@@ -181,21 +143,17 @@ export type AssinaturaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   _count?: AssinaturaCountAggregateInputType | true
-  _avg?: AssinaturaAvgAggregateInputType
-  _sum?: AssinaturaSumAggregateInputType
   _min?: AssinaturaMinAggregateInputType
   _max?: AssinaturaMaxAggregateInputType
 }
 
 export type AssinaturaGroupByOutputType = {
-  id: number
-  usuarioId: number
-  planoId: number
+  id: string
+  usuarioId: string
+  planoId: string
   dataInicio: Date
   dataFim: Date
   _count: AssinaturaCountAggregateOutputType | null
-  _avg: AssinaturaAvgAggregateOutputType | null
-  _sum: AssinaturaSumAggregateOutputType | null
   _min: AssinaturaMinAggregateOutputType | null
   _max: AssinaturaMaxAggregateOutputType | null
 }
@@ -219,9 +177,9 @@ export type AssinaturaWhereInput = {
   AND?: Prisma.AssinaturaWhereInput | Prisma.AssinaturaWhereInput[]
   OR?: Prisma.AssinaturaWhereInput[]
   NOT?: Prisma.AssinaturaWhereInput | Prisma.AssinaturaWhereInput[]
-  id?: Prisma.IntFilter<"Assinatura"> | number
-  usuarioId?: Prisma.IntFilter<"Assinatura"> | number
-  planoId?: Prisma.IntFilter<"Assinatura"> | number
+  id?: Prisma.StringFilter<"Assinatura"> | string
+  usuarioId?: Prisma.StringFilter<"Assinatura"> | string
+  planoId?: Prisma.StringFilter<"Assinatura"> | string
   dataInicio?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
   dataFim?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -241,12 +199,12 @@ export type AssinaturaOrderByWithRelationInput = {
 }
 
 export type AssinaturaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.AssinaturaWhereInput | Prisma.AssinaturaWhereInput[]
   OR?: Prisma.AssinaturaWhereInput[]
   NOT?: Prisma.AssinaturaWhereInput | Prisma.AssinaturaWhereInput[]
-  usuarioId?: Prisma.IntFilter<"Assinatura"> | number
-  planoId?: Prisma.IntFilter<"Assinatura"> | number
+  usuarioId?: Prisma.StringFilter<"Assinatura"> | string
+  planoId?: Prisma.StringFilter<"Assinatura"> | string
   dataInicio?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
   dataFim?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
@@ -261,24 +219,23 @@ export type AssinaturaOrderByWithAggregationInput = {
   dataInicio?: Prisma.SortOrder
   dataFim?: Prisma.SortOrder
   _count?: Prisma.AssinaturaCountOrderByAggregateInput
-  _avg?: Prisma.AssinaturaAvgOrderByAggregateInput
   _max?: Prisma.AssinaturaMaxOrderByAggregateInput
   _min?: Prisma.AssinaturaMinOrderByAggregateInput
-  _sum?: Prisma.AssinaturaSumOrderByAggregateInput
 }
 
 export type AssinaturaScalarWhereWithAggregatesInput = {
   AND?: Prisma.AssinaturaScalarWhereWithAggregatesInput | Prisma.AssinaturaScalarWhereWithAggregatesInput[]
   OR?: Prisma.AssinaturaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AssinaturaScalarWhereWithAggregatesInput | Prisma.AssinaturaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Assinatura"> | number
-  usuarioId?: Prisma.IntWithAggregatesFilter<"Assinatura"> | number
-  planoId?: Prisma.IntWithAggregatesFilter<"Assinatura"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Assinatura"> | string
+  usuarioId?: Prisma.StringWithAggregatesFilter<"Assinatura"> | string
+  planoId?: Prisma.StringWithAggregatesFilter<"Assinatura"> | string
   dataInicio?: Prisma.DateTimeWithAggregatesFilter<"Assinatura"> | Date | string
   dataFim?: Prisma.DateTimeWithAggregatesFilter<"Assinatura"> | Date | string
 }
 
 export type AssinaturaCreateInput = {
+  id?: string
   dataInicio: Date | string
   dataFim: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutAssinaturasInput
@@ -287,15 +244,16 @@ export type AssinaturaCreateInput = {
 }
 
 export type AssinaturaUncheckedCreateInput = {
-  id?: number
-  usuarioId: number
-  planoId: number
+  id?: string
+  usuarioId: string
+  planoId: string
   dataInicio: Date | string
   dataFim: Date | string
   pagamentos?: Prisma.PagamentoUncheckedCreateNestedManyWithoutAssinaturaInput
 }
 
 export type AssinaturaUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutAssinaturasNestedInput
@@ -304,31 +262,32 @@ export type AssinaturaUpdateInput = {
 }
 
 export type AssinaturaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  planoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  planoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamentos?: Prisma.PagamentoUncheckedUpdateManyWithoutAssinaturaNestedInput
 }
 
 export type AssinaturaCreateManyInput = {
-  id?: number
-  usuarioId: number
-  planoId: number
+  id?: string
+  usuarioId: string
+  planoId: string
   dataInicio: Date | string
   dataFim: Date | string
 }
 
 export type AssinaturaUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AssinaturaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  planoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  planoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -351,12 +310,6 @@ export type AssinaturaCountOrderByAggregateInput = {
   dataFim?: Prisma.SortOrder
 }
 
-export type AssinaturaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  planoId?: Prisma.SortOrder
-}
-
 export type AssinaturaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
@@ -371,12 +324,6 @@ export type AssinaturaMinOrderByAggregateInput = {
   planoId?: Prisma.SortOrder
   dataInicio?: Prisma.SortOrder
   dataFim?: Prisma.SortOrder
-}
-
-export type AssinaturaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  planoId?: Prisma.SortOrder
 }
 
 export type AssinaturaScalarRelationFilter = {
@@ -483,6 +430,7 @@ export type AssinaturaUpdateOneRequiredWithoutPagamentosNestedInput = {
 }
 
 export type AssinaturaCreateWithoutUsuarioInput = {
+  id?: string
   dataInicio: Date | string
   dataFim: Date | string
   plano: Prisma.PlanoCreateNestedOneWithoutAssinaturasInput
@@ -490,8 +438,8 @@ export type AssinaturaCreateWithoutUsuarioInput = {
 }
 
 export type AssinaturaUncheckedCreateWithoutUsuarioInput = {
-  id?: number
-  planoId: number
+  id?: string
+  planoId: string
   dataInicio: Date | string
   dataFim: Date | string
   pagamentos?: Prisma.PagamentoUncheckedCreateNestedManyWithoutAssinaturaInput
@@ -527,14 +475,15 @@ export type AssinaturaScalarWhereInput = {
   AND?: Prisma.AssinaturaScalarWhereInput | Prisma.AssinaturaScalarWhereInput[]
   OR?: Prisma.AssinaturaScalarWhereInput[]
   NOT?: Prisma.AssinaturaScalarWhereInput | Prisma.AssinaturaScalarWhereInput[]
-  id?: Prisma.IntFilter<"Assinatura"> | number
-  usuarioId?: Prisma.IntFilter<"Assinatura"> | number
-  planoId?: Prisma.IntFilter<"Assinatura"> | number
+  id?: Prisma.StringFilter<"Assinatura"> | string
+  usuarioId?: Prisma.StringFilter<"Assinatura"> | string
+  planoId?: Prisma.StringFilter<"Assinatura"> | string
   dataInicio?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
   dataFim?: Prisma.DateTimeFilter<"Assinatura"> | Date | string
 }
 
 export type AssinaturaCreateWithoutPlanoInput = {
+  id?: string
   dataInicio: Date | string
   dataFim: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutAssinaturasInput
@@ -542,8 +491,8 @@ export type AssinaturaCreateWithoutPlanoInput = {
 }
 
 export type AssinaturaUncheckedCreateWithoutPlanoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataInicio: Date | string
   dataFim: Date | string
   pagamentos?: Prisma.PagamentoUncheckedCreateNestedManyWithoutAssinaturaInput
@@ -576,6 +525,7 @@ export type AssinaturaUpdateManyWithWhereWithoutPlanoInput = {
 }
 
 export type AssinaturaCreateWithoutPagamentosInput = {
+  id?: string
   dataInicio: Date | string
   dataFim: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutAssinaturasInput
@@ -583,9 +533,9 @@ export type AssinaturaCreateWithoutPagamentosInput = {
 }
 
 export type AssinaturaUncheckedCreateWithoutPagamentosInput = {
-  id?: number
-  usuarioId: number
-  planoId: number
+  id?: string
+  usuarioId: string
+  planoId: string
   dataInicio: Date | string
   dataFim: Date | string
 }
@@ -607,6 +557,7 @@ export type AssinaturaUpdateToOneWithWhereWithoutPagamentosInput = {
 }
 
 export type AssinaturaUpdateWithoutPagamentosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutAssinaturasNestedInput
@@ -614,21 +565,22 @@ export type AssinaturaUpdateWithoutPagamentosInput = {
 }
 
 export type AssinaturaUncheckedUpdateWithoutPagamentosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  planoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
+  planoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AssinaturaCreateManyUsuarioInput = {
-  id?: number
-  planoId: number
+  id?: string
+  planoId: string
   dataInicio: Date | string
   dataFim: Date | string
 }
 
 export type AssinaturaUpdateWithoutUsuarioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   plano?: Prisma.PlanoUpdateOneRequiredWithoutAssinaturasNestedInput
@@ -636,28 +588,29 @@ export type AssinaturaUpdateWithoutUsuarioInput = {
 }
 
 export type AssinaturaUncheckedUpdateWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  planoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamentos?: Prisma.PagamentoUncheckedUpdateManyWithoutAssinaturaNestedInput
 }
 
 export type AssinaturaUncheckedUpdateManyWithoutUsuarioInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  planoId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  planoId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AssinaturaCreateManyPlanoInput = {
-  id?: number
-  usuarioId: number
+  id?: string
+  usuarioId: string
   dataInicio: Date | string
   dataFim: Date | string
 }
 
 export type AssinaturaUpdateWithoutPlanoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutAssinaturasNestedInput
@@ -665,16 +618,16 @@ export type AssinaturaUpdateWithoutPlanoInput = {
 }
 
 export type AssinaturaUncheckedUpdateWithoutPlanoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamentos?: Prisma.PagamentoUncheckedUpdateManyWithoutAssinaturaNestedInput
 }
 
 export type AssinaturaUncheckedUpdateManyWithoutPlanoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  usuarioId?: Prisma.StringFieldUpdateOperationsInput | string
   dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -774,9 +727,9 @@ export type $AssinaturaPayload<ExtArgs extends runtime.Types.Extensions.Internal
     pagamentos: Prisma.$PagamentoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    usuarioId: number
-    planoId: number
+    id: string
+    usuarioId: string
+    planoId: string
     dataInicio: Date
     dataFim: Date
   }, ExtArgs["result"]["assinatura"]>
@@ -1205,9 +1158,9 @@ export interface Prisma__AssinaturaClient<T, Null = never, ExtArgs extends runti
  * Fields of the Assinatura model
  */
 export interface AssinaturaFieldRefs {
-  readonly id: Prisma.FieldRef<"Assinatura", 'Int'>
-  readonly usuarioId: Prisma.FieldRef<"Assinatura", 'Int'>
-  readonly planoId: Prisma.FieldRef<"Assinatura", 'Int'>
+  readonly id: Prisma.FieldRef<"Assinatura", 'String'>
+  readonly usuarioId: Prisma.FieldRef<"Assinatura", 'String'>
+  readonly planoId: Prisma.FieldRef<"Assinatura", 'String'>
   readonly dataInicio: Prisma.FieldRef<"Assinatura", 'DateTime'>
   readonly dataFim: Prisma.FieldRef<"Assinatura", 'DateTime'>
 }
