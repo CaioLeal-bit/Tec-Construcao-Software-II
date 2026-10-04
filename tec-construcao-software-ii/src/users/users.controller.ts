@@ -6,7 +6,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @ApiTags('users')
-@Controller('users')
+@Controller('usuarios')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -21,31 +21,24 @@ export class UsersController {
 
   // Rotas protegidas: exigem o token JWT
   @ApiBearerAuth('token') // Configura o Swagger para enviar o Token JWT
-  @UseGuards(AuthGuard('jwt'))
   @Get()
   @ApiOperation({ summary: 'Listar todos os usuários' })
   findAll() {
     return this.usersService.findAll();
   }
 
-  @ApiBearerAuth('token')
-  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   @ApiOperation({ summary: 'Buscar um usuário pelo ID' })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
-  @ApiBearerAuth('token')
-  @UseGuards(AuthGuard('jwt'))
   @Patch(':id')
   @ApiOperation({ summary: 'Atualizar um usuário' })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @ApiBearerAuth('token')
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   @ApiOperation({ summary: 'Remover um usuário' })
   remove(@Param('id') id: string) {
