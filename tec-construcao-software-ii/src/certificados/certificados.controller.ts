@@ -1,6 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { CertificadosService } from './certificados.service';
 
+@ApiTags('Certificados')
+@ApiBearerAuth('token')
+@UseGuards(AuthGuard('jwt'))
 @Controller('certificados')
 export class CertificadosController {
   constructor(private readonly service: CertificadosService) {}

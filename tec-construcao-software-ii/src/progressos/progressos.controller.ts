@@ -1,6 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { ProgressosService } from './progressos.service';
 
+@ApiTags('Progressos')
+@ApiBearerAuth('token')
+@UseGuards(AuthGuard('jwt'))
 @Controller('progressos')
 export class ProgressosController {
   constructor(private readonly service: ProgressosService) {}

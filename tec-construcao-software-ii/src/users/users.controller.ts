@@ -20,25 +20,32 @@ export class UsersController {
   }
 
   // Rotas protegidas: exigem o token JWT
-  @ApiBearerAuth('token') // Configura o Swagger para enviar o Token JWT
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth('token')
   @Get()
   @ApiOperation({ summary: 'Listar todos os usuários' })
   findAll() {
     return this.usersService.findAll();
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth('token')
   @Get(':id')
   @ApiOperation({ summary: 'Buscar um usuário pelo ID' })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth('token')
   @Patch(':id')
   @ApiOperation({ summary: 'Atualizar um usuário' })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth('token')
   @Delete(':id')
   @ApiOperation({ summary: 'Remover um usuário' })
   remove(@Param('id') id: string) {

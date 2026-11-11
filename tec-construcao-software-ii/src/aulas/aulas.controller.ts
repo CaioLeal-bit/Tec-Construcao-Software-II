@@ -1,6 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { AulasService } from './aulas.service';
 
+@ApiTags('Aulas')
+@ApiBearerAuth('token')
+@UseGuards(AuthGuard('jwt'))
 @Controller('aulas')
 export class AulasController {
   constructor(private readonly service: AulasService) {}

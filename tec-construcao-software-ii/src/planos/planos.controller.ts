@@ -1,6 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { PlanosService } from './planos.service';
 
+@ApiTags('Planos')
+@ApiBearerAuth('token')
+@UseGuards(AuthGuard('jwt'))
 @Controller('planos')
 export class PlanosController {
   constructor(private readonly service: PlanosService) {}

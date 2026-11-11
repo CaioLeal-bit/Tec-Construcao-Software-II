@@ -1,6 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { AvaliacoesService } from './avaliacoes.service';
 
+@ApiTags('Avaliações')
+@ApiBearerAuth('token')
+@UseGuards(AuthGuard('jwt'))
 @Controller('avaliacoes')
 export class AvaliacoesController {
   constructor(private readonly service: AvaliacoesService) {}
